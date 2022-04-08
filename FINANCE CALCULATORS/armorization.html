@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="armorization.css">
+ <title>Document</title>
+</head>
+<body>
+ <div id="container">
+   <h1>Installment Loan Calculator</h1>
+
+   <div id="loan_src">
+    <!-- form will be here -->
+    <form name="loan_form">
+     <table>
+      <tr>
+       <td>Loan Amount:</td>
+       <td><input type="text" name="loan_amt" size="10" id="loan_amount"></td>
+      </tr>
+      
+      <tr>
+       <td>Number of Months:</td>
+       <td><input type="text" name="months" size="10"></td>
+      </tr>
+
+       <tr>
+        <td>Annual Interest Rates: <br> <span>4.5% is 4.5</span></td>
+        <td><input type="text" name="rate" size="10"></td>
+       </tr>
+
+        <tr>
+         <td>Extra Monthly Payments:</td>
+         <td><input type="text" name="extra" size="10"></td>
+        </tr>
+       
+        <tr>
+         <td><input type="button" onclick="validate()" value="Calculate"></td>
+         <td><input type="button" onclick="startOver()" value="Start Over"></td>
+        </tr>
+     </table>
+    </form>
+   </div>
+   <div id="loan_info">
+    <!-- info will be here -->
+    loan info
+   </div>
+
+   <div id="table_header"> 
+    <table cellpadding="15" border="1">
+     <tr>
+      <td width="30"> <b>Pmt</b></td>
+      <td width="60"> <b>Payment</b></td>
+      <td width="60"> <b>Principle</b></td>
+      <td width="60"> <b>Interest</b></td>
+      <td width="85"> <b>Interest Paid</b></td>
+      <td width="70"> <b>Balance</b></td>
+     </tr>
+    </table>
+    </div>
+   <div id="table">table</div>
+ </div>
+
+<script src="armorization.js"></script>
+</body>
+</html>

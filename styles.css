@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* text-transform: capitalize; */
+}
+/* header section */
+/* navlinks */
+
+header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* background: palevioletred; */
+  background: url(images/pexels-pixabay-358636.jpg);
+  /* background: rosybrown; */
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+header h2 {
+  padding: 10px;
+}
+
+.orange {
+  color: orangered;
+}
+
+nav a {
+  margin: 20px;
+  text-decoration: none;
+  color: #fff;
+  display: inline-block;
+  margin: 10px 20px;
+}
+nav a:hover {
+  color: orangered;
+  /* border-bottom: 1px solid white; */
+}
+
+nav a:active {
+  color: #fff;
+  border-bottom: 1px solid white;
+}
+.register-btn {
+  background-color: orangered;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.container {
+  padding: 0 5%;
+  transform: translateY(-500%);
+}
+
+.header h1 {
+  font-size: 4vw;
+  font-weight: 500;
+  color: orangered;
+  text-align: left;
+  /* padding-top: 300px; */
+}
+
+.search-bar {
+  background: #fff;
+  width: 45%;
+  margin: 30px;
+  padding: 6px 10px 6px 30px;
+  border-radius: 50px;
+  transform: translateY(-450%);
+}
+
+.search-bar form {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.search-bar form input {
+  display: block;
+  border: 0;
+  outline: none;
+  background: transparent;
+}
+
+.search-bar form button {
+  /* background: #ff5361; */
+  background: orangered;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.location-input {
+  flex: 1;
+}
+.search-bar form label {
+  font-weight: 600;
+}
+/* our services */
+.our_services {
+  background-color: rgba(211, 211, 211, 0.2);
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.oursevimg {
+  background-color: white;
+  width: 400px;
+  height: 400px;
+  margin: 20px auto;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 20px;
+}
+
+.oursevimg ion-icon {
+  font-size: 100px;
+  margin: 10px;
+  color: black;
+}
+
+.oursevimg h3 {
+  font-size: 1.3rem;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  font-weight: 600;
+}
+
+.oursevimg p {
+  text-align: center;
+  line-height: 30px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.oursevimg button {
+  border: 1px orangered solid;
+  color: orangered;
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  align-self: auto;
+  margin: 20px;
+}
+
+.oursevimg button:hover {
+  background-color: orangered;
+  color: #fff;
+}
+
+/* more info section */
+.more-infodiv {
+  display: flex;
+  flex-direction: row;
+}
+.moreinfo1 {
+  border-radius: 20px;
+}
+
+.moreinfo2 {
+  text-align: center;
+}
+
+/* articles section */
+
+.article a {
+  text-decoration: none;
+  color: black;
+  background-color: lightpink;
+}
+
+/* contacts section */
+.contacts {
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.contacts h3 {
+  text-align: center;
+  color: lightgray;
+}
+
+.contacts ion-icon {
+  color: gray;
+  margin: 5px auto;
+  font-size: 20px;
+  padding-left: 5px;
+  cursor: pointer;
+}
+
+.contacts ion-icon:hover {
+  font-size: 25px;
+  padding-left: 0;
+}
+
+.copyright {
+  font-size: 10px;
+}
