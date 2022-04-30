@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="about_styling.css">
+ <title>Document</title>
+</head>
+<body>
+  <h1>About Us</h1>
+
+  <h2>the mission and visions of the system</h2>
+  <div class="mission-vission">
+    our mission and vision.
+  </div>
+
+
+  <!-- Founders of this beautiful system :)) -->
+  <h2>Founders of this sytem</h2>
+  <div class="founders">  
+    Founders section
+  </div>
+
+  <!-- customer opinion section -->
+  <h2>What our customers have to say about us :)</h2>
+  <div class="customer-opinion">
+    <section class="testimonials" id="testim">
+  <div class="wrap">
+    <span id="right-arrow"></span>
+    <span id="left-arrow"></span>
+
+    <ul class="dots" id="testimonial-dots">
+      <li class="dot active"></li>
+      <li class="dot"></li>
+      <li class="dot"></li>
+      <li class="dot"></li>
+      <li class="dot"></li>
+    </ul>
+
+    <div class="container" id="testimonial-content">
+
+      <div class="active">
+        <div class="img">
+          <img src="#" alt="profileimage1">
+          <h2>Kevin Powell</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, deleniti cumque deserunt delectus corporis a distinctio maxime? Laborum, magni aliquam.</p>
+        </div>
+
+        <!-- 2 -->
+        <div class="active">
+          <div class="img">
+            <img src="#" alt="profileimage2">
+            <h2>Kevin Powell</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, deleniti cumque deserunt delectus corporis a
+              distinctio maxime? Laborum, magni aliquam.</p>
+          </div>
+          <!-- 3 -->
+          <div class="active">
+            <div class="img">
+              <img src="#" alt="profileimage3">
+              <h2>Kevin Powell</h2>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, deleniti cumque deserunt delectus corporis a
+                distinctio maxime? Laborum, magni aliquam.</p>
+            </div>
+            <!-- 4 -->
+            <div class="active">
+              <div class="img">
+                <img src="#" alt="profileimage4">
+                <h2>Kevin Powell</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, deleniti cumque deserunt delectus corporis a
+                  distinctio maxime? Laborum, magni aliquam.</p>
+              </div>
+
+              <!-- 5 -->
+              <div class="active">
+                <div class="img">
+                  <img src="#" alt="profileimage5">
+                  <h2>Kevin Powell</h2>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, deleniti cumque deserunt delectus corporis a
+                    distinctio maxime? Laborum, magni aliquam.</p>
+                </div>
+      </div>
+    </div>
+  </div>
+
+    </section>
+  </div>
+
+ <!-- FAQs section -->
+
+ <section class="FAQ">
+  <h2 class="title">Frequently asked Questions</h2>
+  <div class="faq">
+   <div class="question">
+   <h3>What is your website about?</h3>
+   <ion-icon name="chevron-down-outline"></ion-icon>
+   </div>
+
+   <div class="answer"><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit repellat voluptatum nam dolorem sunt asperiores, voluptas repellendus in vero dolor officiis iure quidem perferendis, vitae dolore soluta dolores cupiditate quisquam.</p></div>
+  </div>
+
+  <!-- 2 -->
+  <div class="faq">
+   <div class="question">
+    <h3>How do I list my property?</h3>
+    <ion-icon name="chevron-down-outline"></ion-icon>
+   </div>
+  
+   <div class="answer">
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit repellat voluptatum nam dolorem sunt
+     asperiores, voluptas repellendus in vero dolor officiis iure quidem perferendis, vitae dolore soluta dolores
+     cupiditate quisquam.</p>
+   </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="faq">
+   <div class="question">
+    <h3>How do i book a tour?</h3>
+    <ion-icon name="chevron-down-outline"></ion-icon>
+   </div>
+  
+   <div class="answer">
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit repellat voluptatum nam dolorem sunt
+     asperiores, voluptas repellendus in vero dolor officiis iure quidem perferendis, vitae dolore soluta dolores
+     cupiditate quisquam.</p>
+   </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="faq">
+   <div class="question">
+    <h3>What is the cost for looking for a house on our website?</h3>
+    <ion-icon name="chevron-down-outline"></ion-icon>
+   </div>
+  
+   <div class="answer">
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit repellat voluptatum nam dolorem sunt
+     asperiores, voluptas repellendus in vero dolor officiis iure quidem perferendis, vitae dolore soluta dolores
+     cupiditate quisquam.</p>
+   </div>
+  </div>
+ </section>
+ <!-- javascript for faq portion -->
+ <script>
+const faqs= document.querySelectorAll(".faq");
+
+faqs.forEach(faq =>{
+ faq.addEventListener("click", ()=>{
+  faq.classList.toggle("active");
+ })
+})
+ </script>
+
+
+ <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+ <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+ <script src="aboutus.js"></script>
+</body>
+</html>

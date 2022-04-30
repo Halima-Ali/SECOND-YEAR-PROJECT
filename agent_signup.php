@@ -5,28 +5,28 @@
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="stylesheet" href="login_setup.css?v=<?php echo time(); ?>">
- <title>Document</title>
+ <title>Agent Signup</title>
 </head>
 <body>
  <div class="wrapper">
   <section class="sectiondefault">
 <h1>SignUp</h1>
-<form action="includes/signup.inc.php" method="POST">
+<form action="includes\agentsignup.inc.php" method="POST">
 <ion-icon name="person-outline"></ion-icon>
-<input type="text" name="name" placeholder="Full name....">
+<input type="text" name="agentname" placeholder="Full name....">
 <input type="text" name="email" placeholder="email">
-<input type="text" name="uid" placeholder="UserName">
+<input type="text" name="username" placeholder="UserName">
 
-<input type="password" name="pwd" placeholder="Password">
+<input type="password" name="password" placeholder="Password">
 <!-- to confirm the password -->
 <!-- <div class="pwd-info">
   <p>Minimum eight characters</p>
   <p>at least one letter and one number</p>
 </div> -->
-<input type="password" name="pwdRepeat" placeholder="Repeat Password">
-<button type="submit" class="button" name="submit">Sign Up</button>
+<input type="password" name="passwordRepeat" placeholder="Repeat Password">
+<button type="submit" class="button" name="agent-submit">Sign Up as an Agent</button>
 <hr>
-<h3>Already a member?<a href="login.php">Log in</a></h3>
+<h3>Already a member?<a href="agent_login.php">Log in</a></h3>
 <!-- email. we want to get a reset password email -->
 </form>
 

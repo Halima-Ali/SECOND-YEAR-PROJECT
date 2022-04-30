@@ -1,3 +1,4 @@
+<!-- login page for the property owner -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,21 +6,21 @@
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="stylesheet" href="login_setup.css?v=<?php echo time(); ?>">
- <title>User Login</title>
+ <title>PROPERTY OWNER Login</title>
 </head>
 <body>
  <!-- login section -->
  <div class="wrapper">
   <section class="sectiondefault">
 <h1>Log In</h1>
-<form action="includes/login.inc.php" method="POST">
+<form action="includes\po_login.inc.php" method="POST">
 <ion-icon name="person-outline"></ion-icon>
-<input type="text" name="uid" placeholder="UserName/Email">
-<input type="password" name="pwd" placeholder="Password">
-<button type="submit" class="button" name="login-submit">Login</button>
+<input type="text" name="po_uid" placeholder="UserName/Email">
+<input type="password" name="po_pwd" placeholder="Password">
+<button type="submit" class="button" name="po_login-submit">Login</button>
 <hr>
 <a href="reset-password.php" class="forgot_Pwd">Forgot password?</a>
-<h3>Not Yet a Member?<a href="signup.php">Sign Up</a></h3>
+<h3>Not Yet a Member?<a href="po_signup.php">Sign Up</a></h3>
 <!-- email. we want to get a reset password email -->
 </form>
 <?php

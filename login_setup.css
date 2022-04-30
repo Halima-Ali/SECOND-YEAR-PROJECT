@@ -57,14 +57,14 @@ ion-icon{
  margin: 1px auto;
 }
 
-.errors{
- color: red;
- font-size: 15px;
- left: 5px;
-}
-
 .pwd-info{
  color:gray;
  font-size: 10px;
  margin: 0px 20px;
+}
+
+p{
+ color: orangered;
+ font-size: 1rem;
+ text-align: center;
 }
