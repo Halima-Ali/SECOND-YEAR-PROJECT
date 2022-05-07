@@ -39,7 +39,7 @@ mysqli_close($conn);
    
    <div>
    <h2><?php echo htmlspecialchars($review['name']);?></h2>
-   <h4><?php echo htmlspecialchars($review['date']);?></h4>
+ <!-- date -->
    <p><?php echo htmlspecialchars($review['review']);?></p>
    </div>
   </div>

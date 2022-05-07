@@ -4,33 +4,33 @@ session_start();
 // properties
 // to select the properties
 $username=$_SESSION['po_Uid'];
-$sql1="SELECT * FROM property_table WHERE owner_name='$username'";
+$sql1="SELECT * FROM book_tour WHERE owner_name='$username'";
 $result1=mysqli_query($conn,$sql1);
 
-$property_count= mysqli_num_rows($result1);
-$properties=mysqli_fetch_all($result1,MYSQLI_ASSOC);
+$bookings_count= mysqli_num_rows($result1);
+$bookings=mysqli_fetch_all($result1,MYSQLI_ASSOC);
 
 // to select pending properties
-$sql="SELECT * FROM property_table WHERE owner_name='$username' AND property_status='pending'";
+$sql="SELECT * FROM book_tour WHERE owner_name='$username' AND status='pending'";
 $result=mysqli_query($conn,$sql);
 
-$pending_property_count= mysqli_num_rows($result);
-$pending_properties=mysqli_fetch_all($result,MYSQLI_ASSOC);
+$pending_booking_count= mysqli_num_rows($result);
+$pending_bookings=mysqli_fetch_all($result,MYSQLI_ASSOC);
 
 
-//to select accepted properties
-$sql2="SELECT * FROM property_table WHERE owner_name='$username' AND property_status='accepted'";
+//to select accepted bookings
+$sql2="SELECT * FROM book_tour WHERE owner_name='$username' AND status='accepted'";
 $result2=mysqli_query($conn,$sql2);
 
-$accepted_property_count= mysqli_num_rows($result2);
-$accepted_properties=mysqli_fetch_all($result2,MYSQLI_ASSOC);
+$accepted_booking_count= mysqli_num_rows($result2);
+$accepted_bookings=mysqli_fetch_all($result2,MYSQLI_ASSOC);
 
 //to select rejected properties
-$sql3="SELECT * FROM property_table WHERE owner_name='$username' AND property_status='rejected'";
+$sql3="SELECT * FROM book_tour WHERE owner_name='$username' AND status='rejected'";
 $result3=mysqli_query($conn,$sql3);
 
-$rejected_property_count= mysqli_num_rows($result3);
-$rejected_properties=mysqli_fetch_all($result3,MYSQLI_ASSOC);
+$rejected_booking_count= mysqli_num_rows($result3);
+$rejected_bookings=mysqli_fetch_all($result3,MYSQLI_ASSOC);
 
 
 
@@ -86,7 +86,7 @@ mysqli_close($conn);
     </a>
    </li>
    <li>
-    <a href="po_booking.php">
+    <a href="#">
 
      <span class="icon"><ion-icon name="people-circle-outline"></ion-icon></span>
       <span class="title">Bookings</span>
@@ -125,8 +125,8 @@ mysqli_close($conn);
     <div class="cardBox">
      <div class="card">
       <div>
-       <div class="numbers"><?php echo $property_count?></div>
-       <div class="cardName">All Properties</div>
+       <div class="numbers"><?php echo $bookings_count?></div>
+       <div class="cardName">All Bookings</div>
       </div>
 
       <div class="iconBx">
@@ -136,8 +136,8 @@ mysqli_close($conn);
 
          <div class="card">
       <div>
-       <div class="numbers"><?php echo $pending_property_count?></div>
-       <div class="cardName">Pending Properties</div>
+       <div class="numbers"><?php echo $pending_booking_count?></div>
+       <div class="cardName">Pending Bookings</div>
       </div>
 
       <div class="iconBx">
@@ -147,8 +147,8 @@ mysqli_close($conn);
 
          <div class="card">
       <div>
-       <div class="numbers"><?php echo $accepted_property_count?></div>
-       <div class="cardName">Accepted Properties</div>
+       <div class="numbers"><?php echo $accepted_booking_count?></div>
+       <div class="cardName">Accepted Bookings</div>
       </div>
 
       <div class="iconBx">
@@ -158,8 +158,8 @@ mysqli_close($conn);
 
          <div class="card">
       <div>
-       <div class="numbers"><?php echo $rejected_property_count?></div>
-       <div class="cardName">Rejected</div>
+       <div class="numbers"><?php echo $rejected_booking_count?></div>
+       <div class="cardName">Rejected Bookings</div>
       </div>
 
       <div class="iconBx">
@@ -172,56 +172,53 @@ mysqli_close($conn);
     <div class="details">
      <div class="usersStats">
       <div class="cardHeader">
-       <h2>All Properties</h2>
+       <h2>All Bookings</h2>
        <a href="add_property.php" class="btn">Add Property</a>
       </div>
 
       <table>
        <thead>
         <tr>
-        <td>Property Name</td>
-        <td>Location</td>
-        <td>Price</td>
-        <td>Purpose</td>
-        <td>Action</td>
+        <td>Booking Id</td>
+        <td>Property Id</td>
+        <td>UserName</td>
+        <td>Request</td>
         <td>Status</td>
         </tr>
        </thead>
         <tbody>
          <tr>
            <!-- pending projects -->
-        <?php foreach($pending_properties as $pending_property):?>
+        <?php foreach($pending_bookings as $pending_booking):?>
         <tr>
-         <td><?php echo htmlspecialchars($pending_property['property_name']);?></td>
-         <td><?php echo htmlspecialchars($pending_property['location']);?></td>
-         <td><?php echo htmlspecialchars($pending_property['price']);?></td>
-         <td><?php echo htmlspecialchars($pending_property['purpose']);?></td>        
-        <?php echo "<td><a href='property_delete.php?id=".$pending_property['property_id']."&name=".$pending_property['property_name']."'><ion-icon name=\"trash-outline\"></ion-icon></a><a href=\"edit_property.php?id=\"".$pending_property['property_id']."><ion-icon name=\"create-outline\"></ion-icon></a></td>";?>    
-         <td><span class="status pending"><?php echo htmlspecialchars($pending_property['property_status']);?></span></td>
+         <td><?php echo htmlspecialchars($pending_booking['tour_id'])?></td>
+         <td><?php echo htmlspecialchars($pending_booking['property_id']);?></td>
+         <td><?php echo htmlspecialchars($pending_booking['user']);?></td>
+         <td><?php echo htmlspecialchars($pending_booking['requests']);?></td>
+        
+         <td><span class="status pending"><?php echo htmlspecialchars($pending_booking['status']);?></span></td>
          </tr>
         <?php endforeach;?>
         
         <!-- accepted properties -->
-        <?php foreach($accepted_properties as $accepted_property):?>
+        <?php foreach($accepted_bookings as $accepted_booking):?>
         <tr>
-         <td><?php echo htmlspecialchars($accepted_property['property_name']);?></td>
-         <td><?php echo htmlspecialchars($accepted_property['location']);?></td>
-         <td><?php echo htmlspecialchars($accepted_property['price']);?></td>
-         <td><?php echo htmlspecialchars($accepted_property['purpose']);?></td>
-        <?php echo "<td><a href='property_delete.php?id=".$accepted_property['property_id']."&name=".$accepted_property['property_name']."'><ion-icon name=\"trash-outline\"></ion-icon></a><a href='edit_property.php?id=".$accepted_property['property_id']."''><ion-icon name=\"create-outline\"></ion-icon></a></td>";?>  
-        <td><span class="status delivered"><?php echo htmlspecialchars($accepted_property['property_status']);?></span></td>
+         <td><?php echo htmlspecialchars($accepted_booking['tour_id']);?></td>
+         <td><?php echo htmlspecialchars($accepted_booking['property_id']);?></td>
+         <td><?php echo htmlspecialchars($accepted_booking['user']);?></td>
+         <td><?php echo htmlspecialchars($accepted_booking['requests']);?></td> 
+        <td><span class="status delivered"><?php echo htmlspecialchars(($accepted_booking['status']));?></span></td>
          </tr>
         <?php endforeach;?>
 
         <!-- rejected properties -->
-        <?php foreach($rejected_properties as $rejected_property):?>
+        <?php foreach($rejected_bookings as $rejected_booking):?>
         <tr>
-         <td><?php echo htmlspecialchars($rejected_property['property_name']);?></td>
-         <td><?php echo htmlspecialchars($rejected_property['location']);?></td>
-         <td><?php echo htmlspecialchars($rejected_property['price']);?></td>
-         <td><?php echo htmlspecialchars($rejected_property['purpose']);?></td>
-         <?php echo "<td><a href='property_delete.php?id=".$rejected_property['property_id']."&name=".$rejected_property['property_name']."'><ion-icon name=\"trash-outline\"></ion-icon></a><a href='edit_property.php?id=".$rejected_property['property_id']."'><ion-icon name=\"create-outline\"></ion-icon></a></td>";?>  
-         <td><span class="status rejected"><?php echo htmlspecialchars($rejected_property['property_status']);?></span></td>
+         <td><?php echo htmlspecialchars($rejected_booking['tour_id']);?></td>
+         <td><?php echo htmlspecialchars($rejected_booking['property_id']);?></td>
+         <td><?php echo htmlspecialchars($rejected_booking['user']);?></td>
+         <td><?php echo htmlspecialchars($rejected_booking['requests']);?></td>
+         <td><span class="status rejected"><?php echo htmlspecialchars($rejected_booking['status']);?></span></td>
          </tr>
         <?php endforeach;?>
        </table>
@@ -229,18 +226,19 @@ mysqli_close($conn);
      </div>
      <div class="recentUsers">
       <div class="cardHeader">
-       <h2>Pending Properties</h2>
+       <h2>Pending Bookings</h2>
        <!-- <a href="#" class="btn">View All</a> -->
       </div>
       <table>
         <tr>
-         <?php foreach($pending_properties as $pending_property):?>
+         <?php foreach($pending_bookings as $pending_booking):?>
         <tr>
-         <td><?php echo htmlspecialchars($pending_property['property_name']);?></td>
+         <td><?php echo htmlspecialchars($pending_booking['tour_id']);?></td>
          <br>
-         <td><?php echo htmlspecialchars($pending_property['location']);?></td>
+         <td><?php echo htmlspecialchars($pending_booking['requests']);?></td>
         </td>
-         <td><span class="status pending"><?php echo htmlspecialchars($pending_property['property_status']);?></span></td>
+         <?php echo "<td><a href='tour.validate.php?id=".$pending_booking['tour_id']."'><span class=\"status delivered\">Accept</span></a></td>"?>
+         <?php echo "<td><a href='tourReject.php?id=".$pending_booking['tour_id']."'><span class=\"status rejected\">Reject</span></a></td>"?>
          </tr>
         <?php endforeach;?>
         </tr>

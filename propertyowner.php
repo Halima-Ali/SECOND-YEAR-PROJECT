@@ -66,7 +66,7 @@ mysqli_close($conn);
     </a>
    </li>
    <li>
-    <a href="#">
+    <a href="po_booking.php">
 
      <span class="icon"><ion-icon name="people-circle-outline"></ion-icon></span>
       <span class="title">Bookings</span>

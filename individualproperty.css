@@ -16,6 +16,7 @@
 .property-title .row{
  display: flex;
  flex-wrap: wrap;
+ justify-content: space-between;
  align-items: center;
  margin: 10px 0;
 }
@@ -32,7 +33,7 @@
 .gallery{
  display: grid;
  grid-gap: 10px;
- /* grid-template-areas: 'first first . .' 'first first . .'; */
+ grid-template-areas: 'first first . .' 'first first . .';
  margin: 20px 0;
 }
 
@@ -222,4 +223,19 @@ margin: 20px;
  display: flex;
  flex-direction: row;
  justify-content: space-evenly;
+}
+
+h2 a{
+ text-decoration: none;
+ color: black;
+}
+
+.img1{
+ width:863px;
+ height: 541px;
+}
+
+.Location{
+ color: orangered;
+ 
 }

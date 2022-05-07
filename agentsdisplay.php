@@ -19,6 +19,7 @@ mysqli_close($conn);
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="stylesheet" href="agents1.css">
+ <!-- <link rel="stylesheet" href="styles.css"> -->
  <title>Agents</title>
 </head>
 <body>
@@ -39,6 +40,74 @@ mysqli_close($conn);
     <p>200+ agents featured</p>
  </div>
  <hr>
+
+ <section class="agents" id="agents">
+  <div class="title">
+    <h1 class="heading"> Featured <span>Agents</span></h1>
+  </div>
+  <div class="box-container">
+
+        <div class="box">
+            <a href="#" class="fas fa-envelope"></a>
+            <a href="#" class="fas fa-phone"></a>
+            <img src="images/pic-1.png" alt="">
+            <h3>john deo</h3>
+            <span>agent</span>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+            </div>
+            <a href="#" class="btn">View Profile</a>
+        </div>
+
+        <div class="box">
+            <a href="#" class="fas fa-envelope"></a>
+            <a href="#" class="fas fa-phone"></a>
+            <img src="images/pic-2.png" alt="">
+            <h3>john deo</h3>
+            <span>agent</span>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+            </div>
+            <a href="#" class="btn">View Profile</a>
+        </div>
+
+        <div class="box">
+            <a href="#" class="fas fa-envelope"></a>
+            <a href="#" class="fas fa-phone"></a>
+            <img src="images/pic-3.png" alt="">
+            <h3>john deo</h3>
+            <span>agent</span>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+            </div>
+            <a href="#" class="btn">View Profile</a>
+        </div>
+
+        <div class="box">
+            <a href="#" class="fas fa-envelope"></a>
+            <a href="#" class="fas fa-phone"></a>
+            <img src="images/pic-4.png" alt="">
+            <h3>john deo</h3>
+            <span>agent</span>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+            </div>
+          <a href="#" class="btn">View Profile</a>
+        </div>
+
+</section>
 
  <div class="row">
 
