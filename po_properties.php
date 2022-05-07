@@ -179,7 +179,7 @@ mysqli_close($conn);
       <table>
        <thead>
         <tr>
-        <td>Property Id</td>
+        <td>Property Name</td>
         <td>Location</td>
         <td>Price</td>
         <td>Purpose</td>
@@ -192,11 +192,11 @@ mysqli_close($conn);
            <!-- pending projects -->
         <?php foreach($pending_properties as $pending_property):?>
         <tr>
-         <td><?php echo htmlspecialchars($pending_property['property_id']);?></td>
+         <td><?php echo htmlspecialchars($pending_property['property_name']);?></td>
          <td><?php echo htmlspecialchars($pending_property['location']);?></td>
          <td><?php echo htmlspecialchars($pending_property['price']);?></td>
          <td><?php echo htmlspecialchars($pending_property['purpose']);?></td>        
-        <?php echo "<td><a href='property_delete.php?id=".$pending_property['property_id']."'><ion-icon name=\"trash-outline\"></ion-icon></a><a href=\"edit_property.php?id=\"".$pending_property['property_id']."><ion-icon name=\"create-outline\"></ion-icon></a></td>";?>    
+        <?php echo "<td><a href='property_delete.php?id=".$pending_property['property_id']."&name=".$pending_property['property_name']."'><ion-icon name=\"trash-outline\"></ion-icon></a><a href=\"edit_property.php?id=\"".$pending_property['property_id']."><ion-icon name=\"create-outline\"></ion-icon></a></td>";?>    
          <td><span class="status pending"><?php echo htmlspecialchars($pending_property['property_status']);?></span></td>
          </tr>
         <?php endforeach;?>
@@ -204,11 +204,11 @@ mysqli_close($conn);
         <!-- accepted properties -->
         <?php foreach($accepted_properties as $accepted_property):?>
         <tr>
-         <td><?php echo htmlspecialchars($accepted_property['property_id']);?></td>
+         <td><?php echo htmlspecialchars($accepted_property['property_name']);?></td>
          <td><?php echo htmlspecialchars($accepted_property['location']);?></td>
          <td><?php echo htmlspecialchars($accepted_property['price']);?></td>
          <td><?php echo htmlspecialchars($accepted_property['purpose']);?></td>
-        <?php echo "<td><a href='property_delete.php?id=".$accepted_property['property_id']."'><ion-icon name=\"trash-outline\"></ion-icon></a><a href='edit_property.php?id=".$accepted_property['property_id']."''><ion-icon name=\"create-outline\"></ion-icon></a></td>";?>  
+        <?php echo "<td><a href='property_delete.php?id=".$accepted_property['property_id']."&name=".$accepted_property['property_name']."'><ion-icon name=\"trash-outline\"></ion-icon></a><a href='edit_property.php?id=".$accepted_property['property_id']."''><ion-icon name=\"create-outline\"></ion-icon></a></td>";?>  
         <td><span class="status delivered"><?php echo htmlspecialchars($accepted_property['property_status']);?></span></td>
          </tr>
         <?php endforeach;?>
@@ -216,11 +216,11 @@ mysqli_close($conn);
         <!-- rejected properties -->
         <?php foreach($rejected_properties as $rejected_property):?>
         <tr>
-         <td><?php echo htmlspecialchars($rejected_property['property_id']);?></td>
+         <td><?php echo htmlspecialchars($rejected_property['property_name']);?></td>
          <td><?php echo htmlspecialchars($rejected_property['location']);?></td>
          <td><?php echo htmlspecialchars($rejected_property['price']);?></td>
          <td><?php echo htmlspecialchars($rejected_property['purpose']);?></td>
-         <?php echo "<td><a href='property_delete.php?id=".$rejected_property['property_id']."'><ion-icon name=\"trash-outline\"></ion-icon></a><a href='edit_property.php?id=".$rejected_property['property_id']."'><ion-icon name=\"create-outline\"></ion-icon></a></td>";?>  
+         <?php echo "<td><a href='property_delete.php?id=".$rejected_property['property_id']."&name=".$rejected_property['property_name']."'><ion-icon name=\"trash-outline\"></ion-icon></a><a href='edit_property.php?id=".$rejected_property['property_id']."'><ion-icon name=\"create-outline\"></ion-icon></a></td>";?>  
          <td><span class="status rejected"><?php echo htmlspecialchars($rejected_property['property_status']);?></span></td>
          </tr>
         <?php endforeach;?>
@@ -236,7 +236,7 @@ mysqli_close($conn);
         <tr>
          <?php foreach($pending_properties as $pending_property):?>
         <tr>
-         <td><?php echo htmlspecialchars($pending_property['property_id']);?></td>
+         <td><?php echo htmlspecialchars($pending_property['property_name']);?></td>
          <br>
          <td><?php echo htmlspecialchars($pending_property['location']);?></td>
         </td>

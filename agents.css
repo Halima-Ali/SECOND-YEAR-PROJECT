@@ -121,3 +121,16 @@ ion-icon{
 select{
   margin: 20px;
 }
+
+.b1{
+  border: none;
+  outline: 0;
+  background-color: orangered;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  display: inline-block;
+  margin: 10px;
+  border-radius: 4px;
+  text-decoration: none;
+}

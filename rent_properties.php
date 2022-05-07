@@ -1,6 +1,6 @@
 <?php
 include 'includes\db_config.php';
-$sql1="SELECT * FROM property_table WHERE property_status='accepted' ORDER BY property_id";
+$sql1="SELECT * FROM property_table WHERE purpose='for-rent' ORDER BY property_id";
 $result1=mysqli_query($conn,$sql1);
 
 $property_count= mysqli_num_rows($result1);
@@ -51,7 +51,7 @@ mysqli_free_result($result1);
                     <h3><?php echo htmlspecialchars($property['purpose']);?></h3>
                 </div>
                 <div class="icons">
-                    <?php echo "<a href='property_slideshow.php?name=".$property['property_name']."'><ion-icon name=\"image-outline\"></ion-icon><h3>".htmlspecialchars($images_count)."</h3></a>";?>
+                     <?php echo "<a href='property_slideshow.php?name=".$property['property_name']."'><ion-icon name=\"image-outline\"></ion-icon><h3>".htmlspecialchars($images_count)."</h3></a>";?>
                 </div>
             </div>
             <div class="content">
@@ -91,4 +91,4 @@ mysqli_free_result($result1);
 <?php
  mysqli_free_result($result2);
  mysqli_free_result($result3);
-             mysqli_close($conn);?>
+ mysqli_close($conn);?>

@@ -2,7 +2,7 @@
 <?php
 include 'includes\db_config.php';
 
-$sql= "SELECT * FROM agent_profile ORDER BY agentId";
+$sql= "SELECT * FROM agent_profile WHERE status='accepted' ORDER BY agentId";
 
 $result=mysqli_query($conn,$sql);
 

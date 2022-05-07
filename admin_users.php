@@ -85,7 +85,7 @@ mysqli_close($conn);
     </a>
    </li>
    <li>
-    <a href="#">
+    <a href="admin_reports.php">
      <span class="icon"><ion-icon name="analytics-outline"></span>
      <span class="title">Reports</ion-icon></span>
     </a>
@@ -169,8 +169,8 @@ mysqli_close($conn);
     <div class="details">
      <div class="usersStats">
       <div class="cardHeader">
-       <h2>Recent Orders</h2>
-       <a href="#" class="btn">View All</a>
+       <h2>Recent Users</h2>
+       <!-- <a href="#" class="btn">View All</a> -->
       </div>
 
       <table>

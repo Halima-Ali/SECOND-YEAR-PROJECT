@@ -7,7 +7,7 @@ if(!isset($_SESSION['agentId'])){}
 
 $id=$_SESSION['agentId'];
 
-$sql= "SELECT * FROM agent_profile WHERE agentId='$id'";
+$sql= "SELECT * FROM agent_profile WHERE agentNo='$id'";
 
 $result=mysqli_query($conn,$sql);
 

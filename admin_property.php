@@ -50,7 +50,7 @@ mysqli_close($conn);
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="stylesheet" href="admin.css?v=<?php echo time(); ?>">
- <title>Responsive Admin Dashboard</title>
+ <title>Admin Properties Page</title>
 </head>
 <body>
   <div class="container">
@@ -88,7 +88,7 @@ mysqli_close($conn);
     </a>
    </li>
    <li>
-    <a href="#">
+    <a href="admin_reports.php">
      <span class="icon"><ion-icon name="analytics-outline"></span>
      <span class="title">Reports</ion-icon></span>
     </a>
@@ -173,18 +173,16 @@ mysqli_close($conn);
      <div class="usersStats">
       <div class="cardHeader">
        <h2>All Properties</h2>
-       <a href="add_property.php" class="btn">Add Property</a>
       </div>
 
       <table>
        <thead>
         <tr>
         <td>Property Id</td>
+        <td>Property Name</td>
         <td>Location</td>
         <td>Price</td>
         <td>Purpose</td>
-        <td>Action1</td>
-        <td>Action2</td>
         <td>Status</td>
         </tr>
        </thead>
@@ -194,12 +192,11 @@ mysqli_close($conn);
         <?php foreach($pending_properties as $pending_property):?>
         <tr>
          <td><?php echo htmlspecialchars($pending_property['property_id']);?></td>
+          <td><?php echo htmlspecialchars($pending_property['property_name']);?></td>
          <td><?php echo htmlspecialchars($pending_property['location']);?></td>
          <td><?php echo htmlspecialchars($pending_property['price']);?></td>
-         <td><?php echo htmlspecialchars($pending_property['purpose']);?></td>    
-        <td><a href="propertyValidate.php"><span class="status delivered">Accepted</span></a></td>
-        <td><a href="propertyValidate.php"><span class="status rejected">Rejected</span></a></td>    
-      
+         <td><?php echo htmlspecialchars($pending_property['purpose']);?></td>
+   
          <td><span class="status pending"><?php echo htmlspecialchars($pending_property['property_status']);?></span></td>
          </tr>
         <?php endforeach;?>
@@ -208,12 +205,11 @@ mysqli_close($conn);
         <?php foreach($accepted_properties as $accepted_property):?>
         <tr>
          <td><?php echo htmlspecialchars($accepted_property['property_id']);?></td>
+         <td><?php echo htmlspecialchars($accepted_property['property_name']);?></td>
          <td><?php echo htmlspecialchars($accepted_property['location']);?></td>
          <td><?php echo htmlspecialchars($accepted_property['price']);?></td>
          <td><?php echo htmlspecialchars($accepted_property['purpose']);?></td>
-          <td><a href="propertyValidate.php"><span class="status delivered">Accepted</span></a></td>
-        <td><a href="propertyValidate.php"><span class="status rejected">Rejected</span></a></td>
-       
+      
         <td><span class="status delivered"><?php echo htmlspecialchars($accepted_property['property_status']);?></span></td>
          </tr>
         <?php endforeach;?>
@@ -222,11 +218,11 @@ mysqli_close($conn);
         <?php foreach($rejected_properties as $rejected_property):?>
         <tr>
          <td><?php echo htmlspecialchars($rejected_property['property_id']);?></td>
+         <td><?php echo htmlspecialchars($rejected_property['property_name']);?></td>
          <td><?php echo htmlspecialchars($rejected_property['location']);?></td>
          <td><?php echo htmlspecialchars($rejected_property['price']);?></td>
          <td><?php echo htmlspecialchars($rejected_property['purpose']);?></td>
-          <td><a href="propertyValidate.php"><span class="status delivered">Accepted</span></a></td>
-        <td><a href="propertyValidate.php"><span class="status rejected">Rejected</span></a></td>           
+         
          <td><span class="status rejected"><?php echo htmlspecialchars($rejected_property['property_status']);?></span></td>
          </tr>
         <?php endforeach;?>
@@ -239,17 +235,14 @@ mysqli_close($conn);
        <!-- <a href="#" class="btn">View All</a> -->
       </div>
       <table>
-        <tr>
-         <?php foreach($pending_properties as $pending_property):?>
+        <?php foreach($pending_properties as $pending_property):?>
         <tr>
          <td><?php echo htmlspecialchars($pending_property['property_id']);?></td>
-         <br>
-         <td><?php echo htmlspecialchars($pending_property['location']);?></td>
-        </td>
-         <td><span class="status pending"><?php echo htmlspecialchars($pending_property['property_status']);?></span></td>
+         <td><?php echo htmlspecialchars($pending_property['property_name']);?></td>
+         <?php echo "<td><a href='propertyValidate.php?id=".$pending_property['property_id']."'><span class=\"status delivered\">Accept</span></a></td>"?>
+         <?php echo "<td><a href='propertyReject.php?id=".$pending_property['property_id']."'><span class=\"status rejected\">Reject</span></a></td>"?>
          </tr>
         <?php endforeach;?>
-        </tr>
        </table>
 
      </div>

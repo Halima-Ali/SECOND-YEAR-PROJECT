@@ -10,6 +10,7 @@ session_start();
  <meta charset="UTF-8">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- <link rel="stylesheet" href="property.css"> -->
  <link rel="stylesheet" href="styles.css?v=<?php echo time(); ?>">
  <title>Document</title>
 </head>
@@ -68,7 +69,7 @@ session_start();
       <h3>Buy a Home</h3>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam distinctio ipsa ab cum error quas fuga ad?
         Perspiciatis, autem officiis?</p>
-      <a href="#" class="btn">Search homes</a>
+      <a href="buy_properties.php" class="btn">Search homes</a>
     </div>
 
     <div class="box">
@@ -84,7 +85,7 @@ session_start();
       <h3>Rent a home</h3>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam distinctio ipsa ab cum error quas fuga ad?
         Perspiciatis, autem officiis?</p>
-      <a href="#" class="btn">Find Rentals</a>
+      <a href="rent_properties.php" class="btn">Find Rentals</a>
     </div>
 
   </div>
@@ -92,61 +93,219 @@ session_start();
 </section>
 
 <!-- properties section -->
-<section class="properties" id="properties">
-  <div class="title">
-    <h1 class="heading"> Featured <span>Properties</span></h1>
-    <a href="all_properties.php">See all></a>
+<section class="featured" id="featured">
 
-    <div class="propertiescontainer">
-      <div class="propertiesleft">
-        <div class="propertycard"><div><img src="images/pexels-binyamin-mellish-1396122.jpg" alt=""></div>
-        <div>
-        <p>$ 1000000</p>
-        <p>2bds 2ba 1400sqft</p>
-        <p>Runda Area</p>
+    <h1 class="heading"> <span>featured</span> properties </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <div class="image-container">
+                <img src="images\house-1.png" alt="">
+                <div class="info">
+                    <h3>for rent</h3>
+                </div>
+                <div class="icons">
+                    <a href="#"><ion-icon name="image-outline"></ion-icon><h3>5</h3></a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="price">
+                    <h3>$25,000/mo</h3>
+                    <a href="#"><ion-icon name="mail-outline"></ion-icon></a>
+                    <a href="#"><ion-icon name="call-outline"></ion-icon></a>
+                </div>
+                <div class="location">
+                    <p>jogeshwari west, mumbai, india - 400104</p>
+                </div>
+                <div class="details">
+                    <h3> <i class="fas fa-expand"></i> 3500 sqft </h3>
+                    <h3> <i class="fas fa-bed"></i> 3 beds </h3>
+                    <h3> <i class="fas fa-bath"></i> 2 baths </h3>
+                </div>
+                <div class="buttons">
+                    <a href="#" class="btn">view details</a>
+                </div>
+            </div>
         </div>
+
+        <div class="box">
+            <div class="image-container">
+                <img src="images/img-2.jpg" alt="">
+                <div class="info">
+                    <h3>6 days ago</h3>
+                    <h3>for sell</h3>
+                </div>
+                <div class="icons">
+                    <a href="#" class="fas fa-film"><h3>2</h3></a>
+                    <a href="#" class="fas fa-camera"><h3>7</h3></a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="price">
+                    <h3>$25,000/mo</h3>
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-envelope"></a>
+                    <a href="#" class="fas fa-phone"></a>
+                </div>
+                <div class="location">
+                    <h3>modern apartments</h3>
+                    <p>jogeshwari west, mumbai, india - 400104</p>
+                </div>
+                <div class="details">
+                    <h3> <i class="fas fa-expand"></i> 3500 sqft </h3>
+                    <h3> <i class="fas fa-bed"></i> 3 beds </h3>
+                    <h3> <i class="fas fa-bath"></i> 2 baths </h3>
+                </div>
+                <div class="buttons">
+                    <a href="#" class="btn">request info</a>
+                    <a href="#" class="btn">view details</a>
+                </div>
+            </div>
         </div>
-        <div class="propertycard"><div><img src="images/pexels-binyamin-mellish-1396122.jpg" alt=""></div>
-        <div>
-        <p>$ 1000000</p>
-        <p>2bds 2ba 1400sqft</p>
-        <p>Runda Area</p>
+
+        <div class="box">
+            <div class="image-container">
+                <img src="images/img-3.jpg" alt="">
+                <div class="info">
+                    <h3>1 days ago</h3>
+                    <h3>for rent</h3>
+                </div>
+                <div class="icons">
+                    <a href="#" class="fas fa-film"><h3>1</h3></a>
+                    <a href="#" class="fas fa-camera"><h3>6</h3></a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="price">
+                    <h3>$25,000/mo</h3>
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-envelope"></a>
+                    <a href="#" class="fas fa-phone"></a>
+                </div>
+                <div class="location">
+                    <h3>modern apartments</h3>
+                    <p>jogeshwari west, mumbai, india - 400104</p>
+                </div>
+                <div class="details">
+                    <h3> <i class="fas fa-expand"></i> 3500 sqft </h3>
+                    <h3> <i class="fas fa-bed"></i> 3 beds </h3>
+                    <h3> <i class="fas fa-bath"></i> 2 baths </h3>
+                </div>
+                <div class="buttons">
+                    <a href="#" class="btn">request info</a>
+                    <a href="#" class="btn">view details</a>
+                </div>
+            </div>
         </div>
+
+        <div class="box">
+            <div class="image-container">
+                <img src="images/img-4.jpg" alt="">
+                <div class="info">
+                    <h3>9 days ago</h3>
+                    <h3>for rent</h3>
+                </div>
+                <div class="icons">
+                    <a href="#" class="fas fa-film"><h3>2</h3></a>
+                    <a href="#" class="fas fa-camera"><h3>6</h3></a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="price">
+                    <h3>$25,000/mo</h3>
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-envelope"></a>
+                    <a href="#" class="fas fa-phone"></a>
+                </div>
+                <div class="location">
+                    <h3>modern apartments</h3>
+                    <p>jogeshwari west, mumbai, india - 400104</p>
+                </div>
+                <div class="details">
+                    <h3> <i class="fas fa-expand"></i> 3500 sqft </h3>
+                    <h3> <i class="fas fa-bed"></i> 3 beds </h3>
+                    <h3> <i class="fas fa-bath"></i> 2 baths </h3>
+                </div>
+                <div class="buttons">
+                    <a href="#" class="btn">request info</a>
+                    <a href="#" class="btn">view details</a>
+                </div>
+            </div>
         </div>
-        <div class="propertycard"><div><img src="images/pexels-binyamin-mellish-1396122.jpg" alt=""></div>
-        <div>
-        <p>$ 1000000</p>
-        <p>2bds 2ba 1400sqft</p>
-        <p>Runda Area</p>
+
+        <div class="box">
+            <div class="image-container">
+                <img src="images/img-5.jpg" alt="">
+                <div class="info">
+                    <h3>10 days ago</h3>
+                    <h3>for sell</h3>
+                </div>
+                <div class="icons">
+                    <a href="#" class="fas fa-film"><h3>3</h3></a>
+                    <a href="#" class="fas fa-camera"><h3>8</h3></a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="price">
+                    <h3>$25,000/mo</h3>
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-envelope"></a>
+                    <a href="#" class="fas fa-phone"></a>
+                </div>
+                <div class="location">
+                    <h3>modern apartments</h3>
+                    <p>jogeshwari west, mumbai, india - 400104</p>
+                </div>
+                <div class="details">
+                    <h3> <i class="fas fa-expand"></i> 3500 sqft </h3>
+                    <h3> <i class="fas fa-bed"></i> 3 beds </h3>
+                    <h3> <i class="fas fa-bath"></i> 2 baths </h3>
+                </div>
+                <div class="buttons">
+                    <a href="#" class="btn">request info</a>
+                    <a href="#" class="btn">view details</a>
+                </div>
+            </div>
         </div>
+
+        <div class="box">
+            <div class="image-container">
+                <img src="images/img-6.jpg" alt="">
+                <div class="info">
+                    <h3>3 days ago</h3>
+                    <h3>for sell</h3>
+                </div>
+                <div class="icons">
+                    <a href="#" class="fas fa-film"><h3>1</h3></a>
+                    <a href="#" class="fas fa-camera"><h3>4</h3></a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="price">
+                    <h3>$25,000/mo</h3>
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-envelope"></a>
+                    <a href="#" class="fas fa-phone"></a>
+                </div>
+                <div class="location">
+                    <h3>modern apartments</h3>
+                    <p>jogeshwari west, mumbai, india - 400104</p>
+                </div>
+                <div class="details">
+                    <h3> <i class="fas fa-expand"></i> 3500 sqft </h3>
+                    <h3> <i class="fas fa-bed"></i> 3 beds </h3>
+                    <h3> <i class="fas fa-bath"></i> 2 baths </h3>
+                </div>
+                <div class="buttons">
+                    <a href="#" class="btn">request info</a>
+                    <a href="#" class="btn">view details</a>
+                </div>
+            </div>
         </div>
-    </div>
-      <div class="propertiesright">
-        <div class="propertycard"><div><img src="images/pexels-binyamin-mellish-1396122.jpg" alt=""></div>
-        <div>
-        <p>$ 1000000</p>
-        <p>2bds 2ba 1400sqft</p>
-        <p>Runda Area</p>
-        </div>
-        </div>
-        <div class="propertycard"><div><img src="images/pexels-binyamin-mellish-1396122.jpg" alt=""></div>
-        <div>
-        <p>$ 1000000</p>
-        <p>2bds 2ba 1400sqft</p>
-        <p>Runda Area</p>
-        </div>
-        </div>
-        <div class="propertycard"><div><img src="images/pexels-binyamin-mellish-1396122.jpg" alt=""></div>
-        <div>
-        <p>$ 1000000</p>
-        <p>2bds 2ba 1400sqft</p>
-        <p>Runda Area</p>
-        </div>
-        </div>
-      </div>
 
     </div>
-  </div>
+    
 </section>
 
 <!-- agents section -->
@@ -315,7 +474,12 @@ session_start();
         <a href="#">About us</a>
         <a href="#">FAQs</a>
         <a href="#">Articles</a>
-        <a href="#">Neighbourhood review page</a>
+        <?php
+  //is the user logged in?
+  if(isset($_SESSION['userUid'])){
+    echo '<a href="neighbourhoodreview.php">Neighbourhood review page</a>';
+  } 
+  ?>      
       </div>
 
       <div class="box">

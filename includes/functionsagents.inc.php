@@ -168,7 +168,7 @@ function loginUser($conn, $userName1,$pwd1){
     $_SESSION['agentId']= $uidExists['agentId'];
     $_SESSION['agentname']= $uidExists['agentName'];
 
-    header("location: ../index.php");
+    header("location: ../agents_profile.php");
     exit();
   }
 }

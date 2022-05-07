@@ -17,8 +17,18 @@ if (isset($_POST['property_submit'])){
   $propertyName=$_POST['propertyName'];
   if(!preg_match('/^[a-zA-Z\s]+$/',$propertyName)){
     $errors['propertyName']='Property Name must be letters and spaces only' .'<br/>';
-   }
- }
+  }else{
+  $propertyName=$_POST['propertyName'];
+  $sql1="SELECT * FROM property_table WHERE property_name='$propertyName'";
+  $result=mysqli_query($conn,$sql1);
+  $num_rows = mysqli_num_rows($result);
+
+    if ($num_rows > 0) {
+      $errors['propertyName']='property already exists' .'<br/>';
+    }
+  }
+ 
+}
 
  if(empty($_POST['price'])){
    $errors['price']='a price is required';
@@ -111,12 +121,17 @@ else{
  $sql="INSERT INTO property_table(property_name,	description,purpose,	location,property_Type,price,	area,bedrooms,bathrooms,	owner_name,property_status) VALUES ('$propertyName','$description','$purpose','$location','$propertyType','$price','$area','$bed','$bath','$propertyOwner','pending');";
 
  if(mysqli_query($conn,$sql)){
-  header("Location:propertyowner.php");
+  header("Location:image_property.php");
  } else{
 
   echo 'query error'. mysqli_error($conn);
  }
-}}
+}
+mysqli_free_result($result);
+mysqli_close($conn);
+}
+
+
 ?>
 
 
@@ -138,9 +153,6 @@ else{
 <h1 class="formtitle">Add <span class="orange">Property</span></h1>
  
  <form action="add_property.php" method="POST">
- <label for="Profile">Property Image</label>
- <input type="file" name="profile_img">
- 
 
  <label for="propertyname">PropertyName</label>
  <input type="text" name="propertyName" placeholder="Property Name...">

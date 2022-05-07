@@ -174,7 +174,7 @@ function loginUser($conn, $userName,$pwd){
       exit();
     }
     else{
-    header("location: ../agents_profile.php");
+    header("location: ../index.php");
     exit();
     }
 

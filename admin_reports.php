@@ -51,7 +51,7 @@ mysqli_close($conn);
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="stylesheet" href="admin.css?v=<?php echo time(); ?>">
- <title>Responsive Admin Dashboard</title>
+ <title>Report Generation page</title>
 </head>
 <body>
   <div class="container">
@@ -173,7 +173,7 @@ mysqli_close($conn);
     <div class="details">
      <div class="usersStats">
       <div class="cardHeader">
-       <h2>Admin Dashboard</h2>
+       <h2>Report Generation page</h2>
       </div>
       <ul>
         <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, ipsa at! Vel, culpa. Molestias, vel?</li>

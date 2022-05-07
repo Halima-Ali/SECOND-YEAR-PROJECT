@@ -2,7 +2,7 @@
 <?php
 include 'includes\db_config.php';
 
-$sql= "SELECT * FROM agent_profile WHERE status=\"pending\" ORDER BY agentId";
+$sql= "SELECT * FROM agent_profile WHERE status='pending' ORDER BY agentId";
 
 $result=mysqli_query($conn,$sql);
 
@@ -12,21 +12,21 @@ $agents=mysqli_fetch_all($result,MYSQLI_ASSOC);
 
 
 // to find all agents
-$sql1="SELECT * FROM agent_profile ORDER BY agentId";
+$sql1="SELECT * FROM agent_profile ORDER BY agentNo";
 $result1=mysqli_query($conn,$sql1);
 
 $agentcount= mysqli_num_rows($result1);
 $totalagents=mysqli_fetch_all($result1,MYSQLI_ASSOC);
 
 //accepted agents
-$sql2="SELECT * FROM agent_profile WHERE status=\"accepted\" ORDER BY agentId";
+$sql2="SELECT * FROM agent_profile WHERE status='accepted' ORDER BY agentNo";
 $result2=mysqli_query($conn,$sql2);
 
 $accepted_count= mysqli_num_rows($result2);
 $accepted_agents=mysqli_fetch_all($result2,MYSQLI_ASSOC);
 
 // rejected agents
-$sql3="SELECT * FROM agent_profile WHERE status=\"rejected\" ORDER BY agentId";
+$sql3="SELECT * FROM agent_profile WHERE status='rejected' ORDER BY agentNo";
 $result3=mysqli_query($conn,$sql3);
 
 $rejected_count= mysqli_num_rows($result3);
@@ -85,7 +85,7 @@ mysqli_close($conn);
     </a>
    </li>
    <li>
-    <a href="#">
+    <a href="admin_reports.php">
      <span class="icon"><ion-icon name="analytics-outline"></span>
      <span class="title">Reports</ion-icon></span>
     </a>
@@ -170,8 +170,8 @@ mysqli_close($conn);
     <div class="details">
      <div class="usersStats">
       <div class="cardHeader">
-       <h2>Pending Agents</h2>
-       <a href="#" class="btn">View All</a>
+       <h2>All Agents</h2>
+       <!-- <a href="#" class="btn">View All</a> -->
       </div>
 
       <table>
@@ -179,23 +179,46 @@ mysqli_close($conn);
         <tr>
         <td>AgentId</td>
         <td>Agent Name</td>
+        <td>Email</td>
         <td>Company</td>
-        <td>Action1</td>
-        <td>Action2</td>
         <td>Status</td>
         </tr>
        </thead>
         <tbody>
+          <!-- pending agents -->
+
           <?php foreach($agents as $agent):?>
          <tr>
-         <td><?php echo htmlspecialchars($agent['agentId']);?></td>
+         <td><?php echo htmlspecialchars($agent['agentNo']);?></td>
          <td><?php echo htmlspecialchars($agent['agent_name']);?></td>
+          <td><?php echo htmlspecialchars($agent['agent_email']);?></td>
          <td><?php echo htmlspecialchars($agent['company']);?></td>
-         <td><a href="propertyValidate.php"><span class="status delivered">Accepted</span></a></td>
-        <td><a href="propertyValidate.php"><span class="status rejected">Rejected</span></a></td> 
-         <td><span class="#"><?php echo htmlspecialchars($agent['status']);?></span></td>
+         <td><span class="status pending"><?php echo htmlspecialchars($agent['status']);?></span></td>
         </tr>
         <?php endforeach; ?>
+
+        <!-- accepted agents -->
+        <?php foreach($accepted_agents as $accepted_agent):?>
+         <tr>
+         <td><?php echo htmlspecialchars($accepted_agent['agentNo']);?></td>
+         <td><?php echo htmlspecialchars($accepted_agent['agent_name']);?></td>
+          <td><?php echo htmlspecialchars($accepted_agent['agent_email']);?></td>
+         <td><?php echo htmlspecialchars($accepted_agent['company']);?></td>
+         <td><span class="status delivered"><?php echo htmlspecialchars($accepted_agent['status']);?></span></td>
+        </tr>
+        <?php endforeach; ?>
+
+        <!-- rejected agents -->
+        <?php foreach($rejected_agents as $rejected_agent):?>
+         <tr>
+         <td><?php echo htmlspecialchars($rejected_agent['agentNo']);?></td>
+         <td><?php echo htmlspecialchars($rejected_agent['agent_name']);?></td>
+          <td><?php echo htmlspecialchars($rejected_agent['agent_email']);?></td>
+         <td><?php echo htmlspecialchars($rejected_agent['company']);?></td>
+         <td><span class="#"><?php echo htmlspecialchars($rejected_agent['status']);?></span></td>
+        </tr>
+        <?php endforeach; ?>
+        
          </tbody>
        </body>
       </table>
@@ -204,14 +227,16 @@ mysqli_close($conn);
      <!-- New Customers -->
      <div class="recentUsers">
       <div class="cardHeader">
-       <h2>All Agents</h2>
-       <a href="#" class="btn">View All</a>
+       <h2>Pending Agents</h2>
+       <!-- <a href="#" class="btn">View All</a> -->
       </div>
       <table>
-        <?php foreach($totalagents as $totalagent):?>
+        <?php foreach($agents as $agent):?>
         <tr>
          <td width="60px"><div class="imgBx"><img src="images\pic-1.png" alt="profile pic 1"></div></td>
-         <td><h4><?php echo htmlspecialchars($totalagent['agent_name']);?><br> <span><?php echo htmlspecialchars($totalagent['company']);?></span></h4></td>
+         <td><h4><?php echo htmlspecialchars($agent['agent_name']);?><br> <span><?php echo htmlspecialchars($agent['company']);?></span></h4></td>
+          <?php echo "<td><a href='agentValidate.php?id=".$agent['agentNo']."'><span class=\"status delivered\">Accept</span></a></td>"?>
+         <?php echo "<td><a href='agentReject.php?id=".$agent['agentNo']."'><span class=\"status rejected\">Reject</span></a></td>"?>
         </tr>
          <?php endforeach; ?>
        </table>

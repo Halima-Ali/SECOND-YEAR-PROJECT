@@ -3,7 +3,7 @@ include 'includes\db_config.php';
 session_start();
 // properties
 // to select the properties
-$username=$_SESSION['po_Uid'];
+$username= $_SESSION['po_Uid'];
 $sql1="SELECT * FROM property_table WHERE owner_name='$username'";
 $result1=mysqli_query($conn,$sql1);
 

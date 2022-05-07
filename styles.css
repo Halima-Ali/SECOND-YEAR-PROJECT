@@ -8,6 +8,11 @@
 /* header section */
 /* navlinks */
 
+:root {
+  --red: orangered;
+  --light-red: #f9edeb;
+}
+
 html{
   scroll-behavior: smooth;
 }
@@ -184,58 +189,6 @@ color: #fff;
   border: 1px solid orangered;
   color: orangered;
   transition: .2s linear;
-}
-
-/* properties section */
-.properties h1{
-  padding-bottom: 0;
-}
-.title{
-  display: flex;
-  flex-direction: column;
-}
-.title a{
-  text-align: right;
-  text-decoration: none;
-  color: orangered;
-  padding-bottom: 10px;
-}
-
-.propertiescontainer{
-  background-color: #fff;
-  border-radius: 10px;
-  display: flex;
-  width: 80%;
-  margin: 50px auto;
-}
-
-.propertiesleft{
-  flex-basis: 50%;
-}
-
-.propertiesright{
-  flex-basis: 50%;
-}
-
-.propertycard{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 400px;
-  margin: 40px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
-  border-radius: 10px;
-}
-
-.propertycard img{
-  width: 150px;
-  width: 125px;
-  padding: 5px;
-  border-radius: 10px;
-}
-
-.propertycard p{
-  margin-bottom: 10px;
 }
 
 
