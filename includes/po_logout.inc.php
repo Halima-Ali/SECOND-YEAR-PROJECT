@@ -10,7 +10,7 @@ session_unset();
 //destroy session
 session_destroy();
 
-header("location: ../all_properties.php");
+header("location: ../index.php");
 
 //forgotten password system
 //what is a token? one time password to authenticate that its a correct user that wants to change their password

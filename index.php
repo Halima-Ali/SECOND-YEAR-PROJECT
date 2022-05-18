@@ -16,6 +16,11 @@ $result=mysqli_query($conn,$sql);
 
 $agents=mysqli_fetch_all($result,MYSQLI_ASSOC);
 
+if(isset($_POST['location_submit'])){
+$location=$_POST['location'];
+header("Location: location.php?location=".$location);
+}
+
 mysqli_free_result($result);
 mysqli_free_result($result1);
 ?>
@@ -64,11 +69,11 @@ mysqli_free_result($result1);
 <div class="container">
   <h1>Find your next place</h1>
   <div class="search-bar">
-    <form>
+    <form action="index.php" method="post">
       <div class="location-input"><label>Location</label>
-      <input type="text" placeholder="Enter a Location">
+      <input type="text" name="location" placeholder="Enter a Location">
       </div>    
-    <button type="submit"><img src="images\search.png" alt="search button"></button>
+    <button type="submit" name="location_submit"><img src="images\search.png" alt="search button"></button>
     </form>
   </div>
 </div>

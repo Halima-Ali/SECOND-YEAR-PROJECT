@@ -3,10 +3,10 @@
 session_start();
 
 include 'includes\db_config.php';
- $propertyName=$description=$location=$price=$area=$bed=$bath=$purpose=$propertyType="";
+ $propertyName=$description=$location=$price=$area=$bed=$bath=$purpose=$propertyType=$amenities=$cyclists=$commute_time=$nearby_facilities='';
 
  //create the errors array
- $errors= array('propertyName'=>'', 'description'=>'','location'=>'','price'=>'','area'=>'','bed'=>'','bath'=>'');
+ $errors= array('propertyName'=>'', 'description'=>'','location'=>'','price'=>'','area'=>'','bed'=>'','bath'=>'','amenities'=>'','cyclists'=>'','commute_time'=>'','nearby_facilities'=>'');
 
 // validating the form
 if (isset($_POST['property_submit'])){
@@ -59,11 +59,40 @@ if (isset($_POST['property_submit'])){
     $errors['description']='';
   }
 
+  // commute time
+     if(empty($_POST['commute_time'])){
+   $errors['commute_time']='an commute_time value is required';
+  }
+  else{
+   $commute_time=$_POST['commute_time'];
+   if(!preg_match('/^[0-9]*$/',$commute_time)){
+    $errors['commute_time']='Enter more than one digit';
+   }
+  }
+
+  // nearby facilities
+    if(empty($_POST['nearby_facilities'])){
+    $errors['nearby_facilities']='please enter a nearby_facilities description'.'</br>';
+  } else{
+   $nearby_facilities=$_POST['nearby_facilities'];
+
+    $errors['nearby_facilities']='';
+  }
+
+  //Joggers safety
+  if(empty($_POST['cyclists'])){
+    $errors['cyclists']='please enter a  description'.'</br>';
+  } else{
+   $cyclists=$_POST['cyclists'];
+
+    $errors['cyclists']='';
+  }
+
  if(empty($_POST['area'])){
    $errors['area']='an area value is required';
   }
   else{
-   $price=$_POST['area'];
+   $area=$_POST['area'];
    if(!preg_match('/^[0-9]*$/',$area)){
     $errors['area']='Enter more than one digit';
    }
@@ -73,7 +102,7 @@ if (isset($_POST['property_submit'])){
    $errors['bed']='an bed value is required';
   }
   else{
-   $price=$_POST['bed'];
+   $bed=$_POST['bed'];
    if(!preg_match('/^[0-9]*$/',$bed)){
     $errors['bed']='Enter more than one digit';
    }
@@ -83,7 +112,7 @@ if (isset($_POST['property_submit'])){
    $errors['bath']='an bath value is required';
   }
   else{
-   $price=$_POST['bath'];
+   $bath=$_POST['bath'];
    if(!preg_match('/^[0-9]*$/',$bath)){
     $errors['bath']='Enter more than one digit';
    }
@@ -91,6 +120,20 @@ if (isset($_POST['property_submit'])){
 
  $purpose=$_POST['purpose'];
  $propertyType=$_POST['propertyType'];
+
+//  amenities
+if(empty($_POST['amenities']))
+  {
+   $errors['amenities']= 'at least one amenity is required'.'<br/>';
+  }
+  else{
+    $amenities=$_POST['amenities'];
+   if(!preg_match('/(^[a-zA-Z\s]+)(,s*[a-zA-Z\s]*)+$/',$amenities)){
+     $errors['amenities']='amenities must be a comma separated list';
+    //preg_match takes 2 arguments , the regex and the variable
+    // echo htmlspecialchars($_POST['title']);
+   }      
+  }
 
 
   //filters an array with a callback function
@@ -106,6 +149,7 @@ else{
  //overriding email variable from brfore
 
  $propertyOwner=$_SESSION['po_Uid'];
+ $propertyOwnerId=$_SESSION['po_id'];
 
  //override the variables from before
  $propertyName= mysqli_real_escape_string($conn,$_POST['propertyName']);
@@ -117,8 +161,12 @@ else{
  $bath= mysqli_real_escape_string($conn,$_POST['bath']);
  $purpose= mysqli_real_escape_string($conn,$_POST['purpose']);
  $propertyType= mysqli_real_escape_string($conn,$_POST['propertyType']);
+ $commute_time=mysqli_real_escape_string($conn,$_POST['commute_time']);
+ $nearby_facilities=mysqli_real_escape_string($conn,$_POST['nearby_facilities']);
+ $cyclists=mysqli_real_escape_string($conn,$_POST['cyclists']);
+ $amenities=mysqli_real_escape_string($conn,$_POST['amenities']);
 
- $sql="INSERT INTO property_table(property_name,	description,purpose,	location,property_Type,price,	area,bedrooms,bathrooms,	owner_name,property_status) VALUES ('$propertyName','$description','$purpose','$location','$propertyType','$price','$area','$bed','$bath','$propertyOwner','pending');";
+ $sql="INSERT INTO property_table(property_name,	description,purpose,location,property_Type,price,	area,bedrooms,bathrooms,	owner_name,property_status,commute_time,nearby_facilities,cyclists,amenities,propertyOwnerId) VALUES ('$propertyName','$description','$purpose','$location','$propertyType','$price','$area','$bed','$bath','$propertyOwner','pending','$commute_time','$nearby_facilities', '$cyclists','$amenities','$propertyOwnerId');";
 
  if(mysqli_query($conn,$sql)){
   header("Location:image_property.php");
@@ -127,7 +175,7 @@ else{
   echo 'query error'. mysqli_error($conn);
  }
 }
-mysqli_free_result($result);
+// mysqli_free_result($result);
 mysqli_close($conn);
 }
 
@@ -181,16 +229,21 @@ mysqli_close($conn);
  <input type="text" name="location" placeholder="location">
  <div class="errors"><?php echo $errors['location']?></div>
 
- <label for="commute_time">Commute Time</label>
+ <label for="commute_time">Commute Time in mins</label>
  <input type="text" name="commute_time" placeholder="Commute time in minutes to CBD area">
  <div class="errors"><?php echo $errors['commute_time']?></div>
 
- <label for="nearby_facilites">Nearby Facilities</label>
- <textarea name="nearby_facilites" id="about" cols="30" rows="10" placeholder="What facilities are close by?" value="<?php echo htmlspecialchars($nearby_facilities)?>"></textarea>
+ <label for="nearby_facilities">Nearby Facilities</label>
+ <textarea name="nearby_facilities" id="about" cols="30" rows="10" placeholder="What facilities are close by?" value="<?php echo htmlspecialchars($nearby_facilities)?>"></textarea>
  <div class="errors"><?php echo $errors['nearby_facilities']?></div>
 
  <label for="cyclist">Joggers and cylists Safety</label>
- <textarea name="nearby_facilites" id="about" cols="30" rows="10" placeholder="What facilities are close by?" value="<?php echo htmlspecialchars($description)?>"></textarea>
+ <textarea name="cyclists" id="about" cols="30" rows="10" placeholder="How Safe is the environment?" value="<?php echo htmlspecialchars($cyclists)?>"></textarea>
+ <div class="errors" ><?php echo $errors['cyclists'];?></div>
+
+ <label for="text">Amenities(comma separated):</label>
+  <input type="text" name="amenities" placeholder="Amenities(comma separated)..." value=<?php echo htmlspecialchars($amenities);?>>
+  <div class="errors" ><?php echo $errors['amenities'];?></div>
 
  <label for="price">Price</label>
  <input type="text" name="price" placeholder="Property Price">

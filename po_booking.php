@@ -12,7 +12,7 @@ $bookings_count= mysqli_num_rows($result1);
 $bookings=mysqli_fetch_all($result1,MYSQLI_ASSOC);
 
 // to select pending properties
-$sql="SELECT * FROM book_tour WHERE owner_name='$username' AND status='pending'";
+$sql="SELECT * FROM book_tour WHERE owner_name='$username' AND tour_status='pending'";
 $result=mysqli_query($conn,$sql);
 
 $pending_booking_count= mysqli_num_rows($result);
@@ -20,14 +20,14 @@ $pending_bookings=mysqli_fetch_all($result,MYSQLI_ASSOC);
 
 
 //to select accepted bookings
-$sql2="SELECT * FROM book_tour WHERE owner_name='$username' AND status='accepted'";
+$sql2="SELECT * FROM book_tour WHERE owner_name='$username' AND tour_status='accepted'";
 $result2=mysqli_query($conn,$sql2);
 
 $accepted_booking_count= mysqli_num_rows($result2);
 $accepted_bookings=mysqli_fetch_all($result2,MYSQLI_ASSOC);
 
 //to select rejected properties
-$sql3="SELECT * FROM book_tour WHERE owner_name='$username' AND status='rejected'";
+$sql3="SELECT * FROM book_tour WHERE owner_name='$username' AND tour_status='rejected'";
 $result3=mysqli_query($conn,$sql3);
 
 $rejected_booking_count= mysqli_num_rows($result3);
@@ -212,7 +212,7 @@ mysqli_close($conn);
          <td><?php echo htmlspecialchars($pending_booking['user']);?></td>
          <td><?php echo htmlspecialchars($pending_booking['requests']);?></td>
         
-         <td><span class="status pending"><?php echo htmlspecialchars($pending_booking['status']);?></span></td>
+         <td><span class="status pending"><?php echo htmlspecialchars($pending_booking['tour_status']);?></span></td>
          </tr>
         <?php endforeach;?>
         
@@ -223,7 +223,7 @@ mysqli_close($conn);
          <td><?php echo htmlspecialchars($accepted_booking['property_id']);?></td>
          <td><?php echo htmlspecialchars($accepted_booking['user']);?></td>
          <td><?php echo htmlspecialchars($accepted_booking['requests']);?></td> 
-        <td><span class="status delivered"><?php echo htmlspecialchars(($accepted_booking['status']));?></span></td>
+        <td><span class="status delivered"><?php echo htmlspecialchars(($accepted_booking['tour_status']));?></span></td>
          </tr>
         <?php endforeach;?>
 
@@ -234,7 +234,7 @@ mysqli_close($conn);
          <td><?php echo htmlspecialchars($rejected_booking['property_id']);?></td>
          <td><?php echo htmlspecialchars($rejected_booking['user']);?></td>
          <td><?php echo htmlspecialchars($rejected_booking['requests']);?></td>
-         <td><span class="status rejected"><?php echo htmlspecialchars($rejected_booking['status']);?></span></td>
+         <td><span class="status rejected"><?php echo htmlspecialchars($rejected_booking['tour_status']);?></span></td>
          </tr>
         <?php endforeach;?>
        </table>

@@ -51,7 +51,7 @@ $rejected_properties=mysqli_fetch_all($result3,MYSQLI_ASSOC);
      <div class="profilediv">
       <div class="cardHeader">
        <h2>Properties owned by <?php echo htmlspecialchars($name);?></h2>
-       <button type="Submit" class="btn" name="generate_reports">Download as PDF</button>
+       <!-- <button type="Submit" class="btn" name="generate_reports">Download as PDF</button> -->
 
           </div>
           <table>

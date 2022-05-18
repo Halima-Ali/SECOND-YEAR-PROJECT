@@ -29,16 +29,16 @@ session_start();
     </a>
    </li>
    <li>
-    <a href="#">
+    <a href="user_booking.php">
      <span class="icon"><ion-icon name="person-outline"></ion-icon></ion-icon></span>
      <span class="title">Bookings</span>
     </a>
    </li>
 
      <li>
-    <a href="#">
+    <a href="user_transaction.php">
      <span class="icon"><ion-icon name="person-outline"></ion-icon></ion-icon></span>
-     <span class="title">Wishlist</span>
+     <span class="title">Transactions</span>
     </a>
    </li>
 
@@ -60,8 +60,7 @@ session_start();
     <!-- search bar -->
     <div class="search">
      <label>
-      <input type="text" placeholder="Search here">
-      <ion-icon name="search-outline"></ion-icon>
+<div></div>
      </label>
     </div>
 
@@ -76,7 +75,7 @@ session_start();
      <div class="card">
       <div>
        <div class="numbers"></div>
-       <div class="cardName">Wishlist</div>
+       <div class="cardName">Transactions</div>
       </div>
 
       <div class="iconBx">

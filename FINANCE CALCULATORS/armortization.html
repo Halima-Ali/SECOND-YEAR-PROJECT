@@ -4,58 +4,174 @@
  <meta charset="UTF-8">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link rel="stylesheet" href="armorization.css">
+ <link rel="stylesheet" href="FINANCE CALCULATORS\armorization.css" type="text/css"/>
+ <style>
+   * {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.orange{
+  color: orangered;
+}
+
+.title{
+  height: 30px;
+}
+
+#container {
+  /* width: 100%; */
+  height: 600px;
+  /* margin: 0px auto; */
+  padding: 10px;
+  /* background-color: lightblue; */
+
+  /* border: 1px solid black; */
+  margin-top: 10px;
+}
+
+.topbar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1000px;
+  height: 300px;
+}
+
+.btn{
+width: 150px;
+background-color: orangered;
+padding: 8px;
+border: none;
+outline: none;
+border-radius: 5px;
+margin: 5px;
+}
+
+#loan_src {
+  /* float: left; */
+  /* width: 30%; */
+  /* height: 220px; */
+  margin-bottom: 10px;
+  padding: 30px;
+  /* border: 1px solid red; */
+}
+
+#loan_scr tr {
+  margin: 30px;
+}
+
+/* #loan_info {
+  /* float: right; 
+  width: 300px;
+  height: 230px;
+  margin-bottom: 10px;
+  border: 2px solid red;
+} */
+
+#loan_info{
+box-shadow: 0 0 8px rgba(0, 0, 0, .25);
+ border-radius: 5px;
+ margin: 40px auto;
+ width: 300px;
+ text-align: justify; 
+ padding: 10px;
+}
+
+#table_header {
+  /* clear: both; */
+  margin: 0 auto;
+  width: 600px;
+  height: 50px;
+  /* background-color: orangered; */
+
+  /* border: 1px solid black; */
+}
+
+#table_heaader table tr td {
+  text-align: center;
+  /* align: center; */
+}
+
+#table {
+  margin: 40px auto;
+  font-family: sans-serif;
+  /* font-size: 13px; */
+  overflow: auto;
+  width: 600px;
+  height: 500px;
+
+  border: 1px solid gray;
+}
+ </style>
  <title>Document</title>
 </head>
 <body>
  <div id="container">
+   <div class="title"><h1>Real <span class="orange">Estate</span></h1></div>
+  <hr>
    <h1>Installment Loan Calculator</h1>
+   <p>An amortization schedule (sometimes called an amortization table) is a table detailing each periodic payment on an
+  amortizing loan. Each calculation done by the calculator will also come with an annual and monthly amortization schedule
+  above. Each repayment for an amortized loan will contain both an interest payment and payment towards the principal
+  balance, which varies for each pay period. An amortization schedule helps indicate the specific amount that will be paid
+  towards each, along with the interest and principal paid to date, and the remaining principal balance after each pay
+  period.
+  
+  Basic amortization schedules do not account for extra payments, but this doesn't mean that borrowers can't pay extra
+  towards their loans. Also, amortization schedules generally do not consider fees. Generally, amortization schedules only
+  work for fixed-rate loans and not adjustable-rate mortgages, variable rate loans, or lines of credit.</p>
+   <hr>
 
-   <div id="loan_src">
+   <div class="topbar">
+  <div id="loan_src">
     <!-- form will be here -->
     <form name="loan_form">
-     <table>
-      <tr>
-       <td>Loan Amount:</td>
-       <td><input type="text" name="loan_amt" size="10" id="loan_amount"></td>
-      </tr>
-      
-      <tr>
-       <td>Number of Months:</td>
-       <td><input type="text" name="months" size="10"></td>
-      </tr>
-
-       <tr>
-        <td>Annual Interest Rates: <br> <span>4.5% is 4.5</span></td>
-        <td><input type="text" name="rate" size="10"></td>
-       </tr>
-
+      <table>
         <tr>
-         <td>Extra Monthly Payments:</td>
-         <td><input type="text" name="extra" size="10"></td>
+          <td>Loan Amount:</td>
+          <td><input type="text" name="loan_amt" id="loan_amount"></td>
         </tr>
-       
+  
         <tr>
-         <td><input type="button" onclick="validate()" value="Calculate"></td>
-         <td><input type="button" onclick="startOver()" value="Start Over"></td>
+          <td>Number of Months:</td>
+          <td><input type="text" name="months"></td>
         </tr>
-     </table>
+  
+        <tr>
+          <td>Annual Interest Rates: <br> <span>4.5% is 4.5</span></td>
+          <td><input type="text" name="rate"></td>
+        </tr>
+  
+        <tr>
+          <td>Extra Monthly Payments:</td>
+          <td><input type="text" name="extra"></td>
+        </tr>
+          <hr>
+        <tr>
+          <td><input type="button" class="btn" onclick="validate()" value="Calculate"></td>
+          <td><input type="button" class="btn" onclick="startOver()" value="Start Over"></td>
+        </tr>
+      </table>
+      <hr>
     </form>
-   </div>
-   <div id="loan_info">
+  </div>
+  <div id="loan_info">
     <!-- info will be here -->
-    loan info
+    <h2>Loan info</h2>
+  </div>
    </div>
+
+
 
    <div id="table_header"> 
     <table cellpadding="15" border="1">
      <tr>
-      <td width="30"> <b>Pmt</b></td>
-      <td width="60"> <b>Payment</b></td>
-      <td width="60"> <b>Principle</b></td>
-      <td width="60"> <b>Interest</b></td>
-      <td width="85"> <b>Interest Paid</b></td>
-      <td width="70"> <b>Balance</b></td>
+      <td><b>Pmt</b></td>
+      <td><b>Payment</b></td>
+      <td><b>Principle</b></td>
+      <td><b>Interest</b></td>
+      <td><b>Interest Paid</b></td>
+      <td><b>Balance</b></td>
      </tr>
     </table>
     </div>

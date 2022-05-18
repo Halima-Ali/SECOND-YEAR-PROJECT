@@ -154,7 +154,7 @@ mysqli_close($conn);
         </tr>
         <tr>
         <td>Property prices per location</td>
-        <td><a href="#">View</a></td>
+        <td><a href="z_locationavform.php">View</a></td>
         </tr>
         <tr>
         <td>Transactions</td>

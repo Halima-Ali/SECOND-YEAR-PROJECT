@@ -1,6 +1,6 @@
 :root {
  --red: orangered;
- --light-red: #f9edeb;
+ --light-red: hsl(9, 54%, 95%);
 }
 
 * {

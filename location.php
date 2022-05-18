@@ -1,1 +1,116 @@
 <!-- where you go to after searching for a property -->
+<?php
+include 'includes\db_config.php';
+$location=$_GET['location'];
+$sql1="SELECT * FROM property_table WHERE location='$location' ORDER BY property_id";
+$result1=mysqli_query($conn,$sql1);
+
+$property_count= mysqli_num_rows($result1);
+$properties=mysqli_fetch_all($result1,MYSQLI_ASSOC);
+
+
+mysqli_free_result($result1);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="property.css">
+ <link rel="stylesheet" href="property1.css">
+ <title>All Properties</title>
+ <style>
+  .message{
+   font-size:30px;
+   text-align:center; 
+  }
+ </style>
+</head>
+<body>
+
+<!-- <a href="tel:0792785777">0792785777</a> -->
+ <!-- contains all property divs -->
+<header class="header">
+<nav>
+    <h3 class="logo">Real<span class="orange">Estate</span></h3>
+    <button class="register-btn"><a href="index.php">Back to index</a></button>
+</nav>
+
+<div class="container">
+<h2>Properties Located in <?php echo htmlspecialchars($location);?></h2>
+<p>Find your next place one click away</p>
+</div>
+
+</header>
+
+
+<!-- featured section starts  -->
+<?php if($property_count>0):?>
+
+<section class="featured" id="featured">
+    <div class="box-container">
+      <?php foreach($properties as $property):?>
+        <div class="box">
+            <div class="image-container">
+             <?php 
+             $pn=$property['property_name'];
+             $sql2="SELECT * FROM property_images WHERE propertyName='$pn' LIMIT 1";
+             $result2=mysqli_query($conn,$sql2);
+             $images=mysqli_fetch_assoc($result2);
+
+             $sql3="SELECT * FROM property_images WHERE propertyName='$pn'";
+             $result3=mysqli_query($conn,$sql3);
+             $images_count= mysqli_num_rows($result3);
+             ?>
+
+             <?php echo "<img src=\"{$images['img_dir']}\" alt=\"\">";?>           
+                <div class="info">
+                    <h3><?php echo htmlspecialchars($property['purpose']);?></h3>
+                </div>
+                <div class="icons">
+                    <?php echo "<a href='property_slideshow.php?name=".$property['property_name']."'><ion-icon name=\"image-outline\"></ion-icon><h3>".htmlspecialchars($images_count)."</h3></a>";?>
+                </div>
+            </div>
+            <div class="content">
+                <div class="price">
+                    <h3>$<?php echo htmlspecialchars($property['price'])?></h3>
+                    <a href="#"><ion-icon name="mail-outline"></ion-icon></a>
+                    <a href="#"><ion-icon name="call-outline"></ion-icon></a>
+                </div>
+                <div class="location">
+                    <p><?php echo htmlspecialchars($property['location'])?></p>
+                </div>
+                <div class="details">
+                    <h3> <i class="fas fa-expand"></i><?php echo htmlspecialchars($property['area'])?>  sqft </h3>
+                    <h3> <i class="fas fa-bed"></i><?php echo htmlspecialchars($property['bedrooms'])?>  beds </h3>
+                    <h3> <i class="fas fa-bath"></i><?php echo htmlspecialchars($property['bathrooms'])?>  baths </h3>
+                </div>
+                <div class="buttons">
+                <?php echo "<a href='individualproperty.php?id=".$property['property_id']."' class=\"btn\">View details</a>";?>
+                 
+                </div>
+            </div>
+        </div>
+        <?php endforeach;?>
+    </div>
+    
+</section>
+<?php
+ mysqli_free_result($result2);
+ mysqli_free_result($result3);
+             mysqli_close($conn);
+else:
+ echo "<h3 class=\"message\">There are no properties from ".$location." featured</h3>";
+endif;?>
+
+<!-- featured section ends -->
+
+<!-- script ionicons -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>
+

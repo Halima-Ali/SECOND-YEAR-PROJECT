@@ -1,7 +1,7 @@
 <?php
 include 'includes\db_config.php';
 // session_start();
-$sql1="SELECT * FROM property_table WHERE purpose='for-sale' ORDER BY property_id";
+$sql1="SELECT * FROM property_table WHERE purpose='for-sale' AND property_status='accepted' ORDER BY property_id";
 $result1=mysqli_query($conn,$sql1);
 
 $property_count= mysqli_num_rows($result1);

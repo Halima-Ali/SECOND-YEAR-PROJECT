@@ -59,7 +59,7 @@ function calculate(loan_amt, months, rate, extra) {
  // we want to show the loan info
  var info = "";
  
- info += "<table width='250'>";
+ info += "<table >";
  // line 1
  info += "<tr><td>Loan Amount:</td>";
  info += "<td align='right'>$"+ loan_amt+"</td></tr>"
@@ -92,12 +92,12 @@ function calculate(loan_amt, months, rate, extra) {
  // row 1
 
  table += "<tr>";
- table += "<td width='30'>0</td>";
- table += "<td width='60'>&nbsp</td>";
- table += "<td width='60'>&nbsp</td>";
- table += "<td width='60'>&nbsp</td>";
- table += "<td width='85'>&nbsp</td>";
- table += "<td width='70'>" + round(loan_amt, 2) + "</td>";
+ table += "<td>0</td>";
+ table += "<td>&nbsp</td>";
+ table += "<td>&nbsp</td>";
+ table += "<td>&nbsp</td>";
+ table += "<td>&nbsp</td>";
+ table += "<td>" + round(loan_amt, 2) + "</td>";
  table += "</tr>";
 
  var current_balance = loan_amt;

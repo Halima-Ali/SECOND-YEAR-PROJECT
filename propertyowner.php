@@ -3,13 +3,21 @@ include 'includes\db_config.php';
 session_start();
 // properties
 // to select the properties
-$username= $_SESSION['po_Uid'];
+$username=$_SESSION['po_Uid'];
 $id=$_SESSION['po_id'];
 $sql1="SELECT * FROM property_table WHERE owner_name='$username'";
 $result1=mysqli_query($conn,$sql1);
 
 $property_count= mysqli_num_rows($result1);
 $properties=mysqli_fetch_all($result1,MYSQLI_ASSOC);
+
+// to select pending properties
+$sql="SELECT * FROM property_table WHERE owner_name='$username' AND property_status='pending'";
+$result=mysqli_query($conn,$sql);
+
+$pending_property_count= mysqli_num_rows($result);
+$pending_properties=mysqli_fetch_all($result,MYSQLI_ASSOC);
+
 
 //to select accepted properties
 $sql2="SELECT * FROM property_table WHERE owner_name='$username' AND property_status='accepted'";
@@ -18,19 +26,35 @@ $result2=mysqli_query($conn,$sql2);
 $accepted_property_count= mysqli_num_rows($result2);
 $accepted_properties=mysqli_fetch_all($result2,MYSQLI_ASSOC);
 
+//to select rejected properties
+$sql3="SELECT * FROM property_table WHERE owner_name='$username' AND property_status='rejected'";
+$result3=mysqli_query($conn,$sql3);
+
+$rejected_property_count= mysqli_num_rows($result3);
+$rejected_properties=mysqli_fetch_all($result3,MYSQLI_ASSOC);
+
+
+$sql4="SELECT * FROM po_images WHERE propertyOwnerId='$id' LIMIT 1";
+$result4=mysqli_query($conn,$sql4);
+$images_count=mysqli_num_rows($result4);
+$images=mysqli_fetch_assoc($result4);
+
+
 
 //IMAGES
 
-  $sql3="SELECT * FROM po_images WHERE propertyOwnerId='$id' LIMIT 1";
-  $result3=mysqli_query($conn,$sql3);
+  $sql5="SELECT * FROM po_images WHERE propertyOwnerId='$id' LIMIT 1";
+  $result5=mysqli_query($conn,$sql5);
 
-  $images_count=mysqli_num_rows($result3);
-  $images=mysqli_fetch_assoc($result3);
+  $images_count=mysqli_num_rows($result5);
+  $images=mysqli_fetch_assoc($result5);
 
 
 mysqli_free_result($result1);
+mysqli_free_result($result);
 mysqli_free_result($result2);
 mysqli_free_result($result3);
+mysqli_free_result($result4);
 mysqli_close($conn);
 
 ?>
@@ -168,36 +192,58 @@ mysqli_close($conn);
      </div>
     </div>
 
-    <!-- section content -->
     <div class="details">
      <div class="usersStats">
       <div class="cardHeader">
        <h2>All Properties</h2>
-       <a href="#" class="btn">See All</a>
+       <!-- <a href="add_property.php" class="btn">Add Property</a> -->
       </div>
 
-      <table>
+    <!-- section content -->
+          <table>
        <thead>
         <tr>
-        <td>Name</td>
+        <td>Property Name</td>
+        <td>Location</td>
         <td>Price</td>
-        <td>Payment</td>
+        <td>Purpose</td>
         <td>Status</td>
         </tr>
        </thead>
         <tbody>
-        <?php foreach($properties as $property):?>
-         <td><?php echo htmlspecialchars($property['property_id']);?></td>
-         <td><?php echo htmlspecialchars($property['location']);?></td>
-         <td><?php echo htmlspecialchars($property['price']);?></td>
-         <td><?php echo htmlspecialchars($property['purpose']);?></td>
-         <?php echo "<td><a href='property_delete.php?id=".$property['property_id']."'><ion-icon name=\"trash-outline\"></ion-icon></a><a href='edit_property.php?id=".$property['property_id']."''><ion-icon name=\"create-outline\"></ion-icon></a></td>";?> 
-         <td><span class="status delivered"><?php echo htmlspecialchars($property['property_status']);?></span></td>
-        </tr>
+           <!-- pending projects -->
+        <?php foreach($pending_properties as $pending_property):?>
+        <tr>
+         <td><?php echo htmlspecialchars($pending_property['property_name']);?></td>
+         <td><?php echo htmlspecialchars($pending_property['location']);?></td>
+         <td><?php echo htmlspecialchars($pending_property['price']);?></td>
+         <td><?php echo htmlspecialchars($pending_property['purpose']);?></td>          
+         <td><span class="status pending"><?php echo htmlspecialchars($pending_property['property_status']);?></span></td>
+         </tr>
         <?php endforeach;?>
-         </tbody>
-       </body>
-      </table>
+        
+        <!-- accepted properties -->
+        <?php foreach($accepted_properties as $accepted_property):?>
+        <tr>
+         <td><?php echo htmlspecialchars($accepted_property['property_name']);?></td>
+         <td><?php echo htmlspecialchars($accepted_property['location']);?></td>
+         <td><?php echo htmlspecialchars($accepted_property['price']);?></td>
+         <td><?php echo htmlspecialchars($accepted_property['purpose']);?></td>  
+        <td><span class="status delivered"><?php echo htmlspecialchars($accepted_property['property_status']);?></span></td>
+         </tr>
+        <?php endforeach;?>
+
+        <!-- rejected properties -->
+        <?php foreach($rejected_properties as $rejected_property):?>
+        <tr>
+         <td><?php echo htmlspecialchars($rejected_property['property_name']);?></td>
+         <td><?php echo htmlspecialchars($rejected_property['location']);?></td>
+         <td><?php echo htmlspecialchars($rejected_property['price']);?></td>
+         <td><?php echo htmlspecialchars($rejected_property['purpose']);?></td> 
+         <td><span class="status rejected"><?php echo htmlspecialchars($rejected_property['property_status']);?></span></td>
+         </tr>
+        <?php endforeach;?>
+       </table>
      </div>   
      
      <!-- New Customers -->
@@ -228,11 +274,10 @@ mysqli_close($conn);
          <td><h4>David <br> <span>Italy</span></h4></td>
         </tr>
         </tr> -->
-       </table>
+       <!-- </table> -->
 
-     </div>
-    </div> -->
-
+    </div> 
+        </div>
    </div>
   </div>
 

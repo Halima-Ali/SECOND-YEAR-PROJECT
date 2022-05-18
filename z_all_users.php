@@ -67,7 +67,7 @@ mysqli_close($conn);
      <div class="profilediv">
       <div class="cardHeader">
        <h2>All Users</h2>
-       <button type="Submit" class="btn" name="generate_reports">Download as PDF</button>
+       <!-- <button type="Submit" class="btn" name="generate_reports">Download as PDF</button> -->
 
           </div>
 
