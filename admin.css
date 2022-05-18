@@ -373,9 +373,9 @@ font-weight: 500;
 white-space: nowrap;
 }
 
-.status.inprogress{
+.status.sold{
 padding: 2px 4px;
-background-color: #1795ce;
+background-color: palevioletred;
 color: var(--white);
 border-radius: 4px;
 font-size: 14px;

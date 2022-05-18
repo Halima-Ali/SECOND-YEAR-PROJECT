@@ -106,11 +106,8 @@ mysqli_close($conn);
     </div>
     <!-- search bar -->
     <div class="search">
-     <label>
-      <input type="text" placeholder="Search here">
-      <ion-icon name="search-outline"></ion-icon>
-     </label>
-    </div>
+    <div></div>   
+  </div>
 
     <!-- userimg -->
     <div class="user">
@@ -166,10 +163,10 @@ mysqli_close($conn);
     </div>
 
     <!-- section content -->
-    <div class="details">
-     <div class="usersStats">
+    <div class="profile_details">
+     <div class="profilediv">
       <div class="cardHeader">
-       <h2>Recent Users</h2>
+       <h2>All Users on the system</h2>
        <!-- <a href="#" class="btn">View All</a> -->
       </div>
 
@@ -191,7 +188,7 @@ mysqli_close($conn);
          <td><?php echo $user['usersEmail']?></td>
          <td><?php echo $user['userUid']?></td>
          <td> <span class="status pending">Normal user</span> </td>
-         <?php echo "<td><a href='nu_delete.php?id=".$user['usersId']."'><ion-icon name=\"trash-outline\"></ion-icon></a></td>";?>
+         <?php echo "<td><a href='nu_delete.php?id=".$user['usersId']."&name=".$user['userName']."'><ion-icon name=\"trash-outline\"></ion-icon></a></td>";?>
          <?php endforeach;?>
         </tr>
         

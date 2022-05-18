@@ -86,8 +86,7 @@ mysqli_close($conn);
     <!-- search bar -->
     <div class="search">
      <label>
-      <input type="text" placeholder="Search here">
-      <ion-icon name="search-outline"></ion-icon>
+            <div></div>
      </label>
     </div>
 
@@ -220,8 +219,8 @@ mysqli_close($conn);
         <tr>
          <td><?php echo htmlspecialchars($accepted_tour['tour_id']);?></td>
          <td><?php echo htmlspecialchars($accepted_tour['property_id']);?></td>
-         <?php echo " <td><a href='payment.php?id=".$accepted_tour['property_id']."&name=".$accepted_tour['owner_name']."' class=\"status delivered\">Yes</a></td>"?>
-          <?php echo "<td><a href='#' class=\"status rejected\">No</a></td>"?>
+         <?php echo " <td><a href='interested.php?id=".$accepted_tour['tour_id']."' class=\"status delivered\">Yes</a></td>"?>
+          <?php echo "<td><a href='notinterested.php?id=".$accepted_tour['tour_id']."' class=\"status rejected\">No</a></td>"?>
         <?php endforeach;?>
         </tr>
        </table>

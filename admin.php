@@ -110,10 +110,7 @@ mysqli_close($conn);
     </div>
     <!-- search bar -->
     <div class="search">
-     <label>
-      <input type="text" placeholder="Search here">
-      <ion-icon name="search-outline"></ion-icon>
-     </label>
+     <div></div>
     </div>
 
     <!-- userimg -->
@@ -127,7 +124,7 @@ mysqli_close($conn);
      <div class="card">
       <div>
        <div class="numbers"><?php echo $user_count?></div>
-       <div class="cardName">Users</div>
+       <div class="cardName">Normal Users</div>
       </div>
 
       <div class="iconBx">
@@ -175,24 +172,16 @@ mysqli_close($conn);
       <div class="cardHeader">
        <h2>Admin Dashboard</h2>
       </div>
+      <b>What is done on the admin dashboard</b>
       <ul>
-        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, ipsa at! Vel, culpa. Molestias, vel?</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, ipsa at! Vel, culpa. Molestias, vel?</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, ipsa at! Vel, culpa. Molestias, vel?</li>
+        <li>Properties posted by property owners are approved to be displayeed on the system</li>
+        <li>Agent profiles posted by agents are approved to be displayeed on the system</li>
+        <li>System Users can be deleted</li>
+        <li>The Admin can view Sytem Generated Reports</li>
       </ul>
  
      </div>   
      
-     <!-- New Customers -->
-     <div class="recentUsers">
-      <div class="cardHeader">
-       <h2>Recent Customers</h2>
-       <a href="#" class="btn">View All</a>
-      </div>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo, beatae adipisci? Repellendus consequatur illum, pariatur distinctio accusantium autem ab eius!</p>
-     </div>
-    </div>
-
    </div>
   </div>
 

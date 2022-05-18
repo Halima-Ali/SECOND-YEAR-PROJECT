@@ -1,33 +1,24 @@
 <?php
 include 'includes\db_config.php';
 session_start();
-// properties
-// to select the properties
 $username=$_SESSION['po_Uid'];
 $id=$_SESSION['po_id'];
-// $sql1="SELECT * FROM book_tour WHERE owner_name='$username'";
-// $result1=mysqli_query($conn,$sql1);
 
-// $bookings_count= mysqli_num_rows($result1);
-// $bookings=mysqli_fetch_all($result1,MYSQLI_ASSOC);
-
-// to select pending properties
-$sql="SELECT * FROM book_tour WHERE owner_name='$username' AND tour_status='pending'";
+$sql="SELECT * FROM book_tour WHERE owner_name='$username' AND tour_status='yes'";
 $result=mysqli_query($conn,$sql);
 
 $pending_booking_count= mysqli_num_rows($result);
 $pending_bookings=mysqli_fetch_all($result,MYSQLI_ASSOC);
 
-
 //to select accepted bookings
-$sql2="SELECT * FROM book_tour WHERE owner_name='$username' AND tour_status='accepted'";
+$sql2="SELECT * FROM book_tour WHERE owner_name='$username' AND tour_status='approved'";
 $result2=mysqli_query($conn,$sql2);
 
 $accepted_booking_count= mysqli_num_rows($result2);
 $accepted_bookings=mysqli_fetch_all($result2,MYSQLI_ASSOC);
 
 //to select rejected properties
-$sql3="SELECT * FROM book_tour WHERE owner_name='$username' AND tour_status='rejected'";
+$sql3="SELECT * FROM book_tour WHERE owner_name='$username' AND tour_status='not approved'";
 $result3=mysqli_query($conn,$sql3);
 
 $rejected_booking_count= mysqli_num_rows($result3);
@@ -45,7 +36,7 @@ $images=mysqli_fetch_assoc($result4);
 
 
 // mysqli_free_result($result1);
-mysqli_free_result($result);
+// mysqli_free_result($result);
 mysqli_free_result($result2);
 mysqli_free_result($result3);
 mysqli_free_result($result4);
@@ -140,8 +131,8 @@ mysqli_close($conn);
     <div class="cardBox">
      <div class="card">
       <div>
-       <div class="numbers"><?php echo $bookings_count?></div>
-       <div class="cardName">All Bookings</div>
+       <div class="numbers"><?php echo htmlspecialchars($bookings_count);?></div>
+       <div class="cardName">All Transactions</div>
       </div>
 
       <div class="iconBx">
@@ -151,8 +142,8 @@ mysqli_close($conn);
 
          <div class="card">
       <div>
-       <div class="numbers"><?php echo $pending_booking_count?></div>
-       <div class="cardName">Pending Bookings</div>
+       <div class="numbers"><?php echo htmlspecialchars($accepted_booking_count);?></div>
+       <div class="cardName">Approved transactions</div>
       </div>
 
       <div class="iconBx">
@@ -162,8 +153,8 @@ mysqli_close($conn);
 
          <div class="card">
       <div>
-       <div class="numbers"><?php echo $accepted_booking_count?></div>
-       <div class="cardName">Accepted Bookings</div>
+       <div class="numbers"><?php echo htmlspecialchars($rejected_booking_count);?></div>
+       <div class="cardName">Rejected transactions</div>
       </div>
 
       <div class="iconBx">
@@ -173,8 +164,8 @@ mysqli_close($conn);
 
          <div class="card">
       <div>
-       <div class="numbers"><?php echo $rejected_booking_count?></div>
-       <div class="cardName">Rejected Bookings</div>
+       <div class="numbers"><?php echo htmlspecialchars($pending_booking_count);?></div>
+       <div class="cardName">Pending Transactions</div>
       </div>
 
       <div class="iconBx">
@@ -187,8 +178,7 @@ mysqli_close($conn);
     <div class="details">
      <div class="usersStats">
       <div class="cardHeader">
-       <h2>All Bookings</h2>
-       <!-- <a href="add_property.php" class="btn">Add Property</a> -->
+       <h2>All Transactions</h2>
       </div>
 
       <table>
@@ -203,7 +193,7 @@ mysqli_close($conn);
        </thead>
         <tbody>
          <tr>
-           <!-- pending projects -->
+           <!-- pending transactions-->
         <?php foreach($pending_bookings as $pending_booking):?>
         <tr>
          <td><?php echo htmlspecialchars($pending_booking['tour_id'])?></td>
@@ -215,7 +205,7 @@ mysqli_close($conn);
          </tr>
         <?php endforeach;?>
         
-        <!-- accepted properties -->
+        <!-- approved Transactions -->
         <?php foreach($accepted_bookings as $accepted_booking):?>
         <tr>
          <td><?php echo htmlspecialchars($accepted_booking['tour_id']);?></td>
@@ -226,7 +216,7 @@ mysqli_close($conn);
          </tr>
         <?php endforeach;?>
 
-        <!-- rejected properties -->
+        <!-- disapproved transactions -->
         <?php foreach($rejected_bookings as $rejected_booking):?>
         <tr>
          <td><?php echo htmlspecialchars($rejected_booking['tour_id']);?></td>
@@ -241,7 +231,7 @@ mysqli_close($conn);
      </div>
      <div class="recentUsers">
       <div class="cardHeader">
-       <h2>Pending Bookings</h2>
+       <h2>Ongoing transactions</h2>
        <!-- <a href="#" class="btn">View All</a> -->
       </div>
       <table>
@@ -250,10 +240,10 @@ mysqli_close($conn);
         <tr>
          <td><?php echo htmlspecialchars($pending_booking['tour_id']);?></td>
          <br>
-         <td><?php echo htmlspecialchars($pending_booking['requests']);?></td>
+         <td><?php echo htmlspecialchars($pending_booking['user']);?></td>
         </td>
-         <?php echo "<td><a href='tour.validate.php?id=".$pending_booking['tour_id']."'><span class=\"status delivered\">Accept</span></a></td>"?>
-         <?php echo "<td><a href='tourReject.php?id=".$pending_booking['tour_id']."'><span class=\"status rejected\">Reject</span></a></td>"?>
+         <?php echo "<td><a href='approved.php?id=".$pending_booking['tour_id']."&po_id=".$pending_booking['property_id']."'><span class=\"status delivered\">Approve</span></a></td>"?>
+         <?php echo "<td><a href='notapproved.php?id=".$pending_booking['tour_id']."'><span class=\"status rejected\">Reject</span></a></td>"?>
          </tr>
         <?php endforeach;?>
         </tr>

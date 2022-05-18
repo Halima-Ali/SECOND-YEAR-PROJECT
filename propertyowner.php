@@ -19,6 +19,17 @@ $pending_property_count= mysqli_num_rows($result);
 $pending_properties=mysqli_fetch_all($result,MYSQLI_ASSOC);
 
 
+$property_count= mysqli_num_rows($result1);
+$properties=mysqli_fetch_all($result1,MYSQLI_ASSOC);
+
+// to select sold properties
+$sql="SELECT * FROM property_table WHERE owner_name='$username' AND property_status='sold'";
+$result=mysqli_query($conn,$sql);
+
+$sold_property_count= mysqli_num_rows($result);
+$sold_properties=mysqli_fetch_all($result,MYSQLI_ASSOC);
+
+
 //to select accepted properties
 $sql2="SELECT * FROM property_table WHERE owner_name='$username' AND property_status='accepted'";
 $result2=mysqli_query($conn,$sql2);
@@ -97,9 +108,9 @@ mysqli_close($conn);
     </a>
    </li>
    <li>
-    <a href="#">
+    <a href="po_transactions.php">
     <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
-     <span class="title">Applications</span>
+     <span class="title">Transactions</span>
     </a>
    </li>
    <li>
@@ -126,10 +137,7 @@ mysqli_close($conn);
     </div>
     <!-- search bar -->
     <div class="search">
-     <label>
-      <input type="text" placeholder="Search here">
-      <ion-icon name="search-outline"></ion-icon>
-     </label>
+  <div></div>
     </div>
 
     <!-- userimg -->
@@ -211,70 +219,18 @@ mysqli_close($conn);
         </tr>
        </thead>
         <tbody>
-           <!-- pending projects -->
-        <?php foreach($pending_properties as $pending_property):?>
+           <!-- SOLD projects -->
+        <?php foreach($sold_properties as $sold_property):?>
         <tr>
-         <td><?php echo htmlspecialchars($pending_property['property_name']);?></td>
-         <td><?php echo htmlspecialchars($pending_property['location']);?></td>
-         <td><?php echo htmlspecialchars($pending_property['price']);?></td>
-         <td><?php echo htmlspecialchars($pending_property['purpose']);?></td>          
-         <td><span class="status pending"><?php echo htmlspecialchars($pending_property['property_status']);?></span></td>
+         <td><?php echo htmlspecialchars($sold_property['property_name']);?></td>
+         <td><?php echo htmlspecialchars($sold_property['location']);?></td>
+         <td><?php echo htmlspecialchars($sold_property['price']);?></td>
+         <td><?php echo htmlspecialchars($sold_property['purpose']);?></td>          
+         <td><span class="status sold"><?php echo htmlspecialchars($sold_property['property_status']);?></span></td>
          </tr>
         <?php endforeach;?>
-        
-        <!-- accepted properties -->
-        <?php foreach($accepted_properties as $accepted_property):?>
-        <tr>
-         <td><?php echo htmlspecialchars($accepted_property['property_name']);?></td>
-         <td><?php echo htmlspecialchars($accepted_property['location']);?></td>
-         <td><?php echo htmlspecialchars($accepted_property['price']);?></td>
-         <td><?php echo htmlspecialchars($accepted_property['purpose']);?></td>  
-        <td><span class="status delivered"><?php echo htmlspecialchars($accepted_property['property_status']);?></span></td>
-         </tr>
-        <?php endforeach;?>
-
-        <!-- rejected properties -->
-        <?php foreach($rejected_properties as $rejected_property):?>
-        <tr>
-         <td><?php echo htmlspecialchars($rejected_property['property_name']);?></td>
-         <td><?php echo htmlspecialchars($rejected_property['location']);?></td>
-         <td><?php echo htmlspecialchars($rejected_property['price']);?></td>
-         <td><?php echo htmlspecialchars($rejected_property['purpose']);?></td> 
-         <td><span class="status rejected"><?php echo htmlspecialchars($rejected_property['property_status']);?></span></td>
-         </tr>
-        <?php endforeach;?>
-       </table>
-     </div>   
-     
-     <!-- New Customers -->
-     <!-- <div class="recentUsers">
-      <div class="cardHeader">
-       <h2></h2>
-       <a href="#" class="btn"></a>
-      </div>
-      <table>
-        <!-- <tr>
-         <td width="60px"><div class="imgBx"><img src="images\pic-1.png" alt="profile pic 1"></div></td>
-         <td><h4>David <br> <span>Italy</span></h4></td>
-        </tr>
-        <tr>
-         <td width="60px"><div class="imgBx"><img src="images\pic-1.png" alt="profile pic 1"></div></td>
-         <td><h4>David <br> <span>Italy</span></h4></td>
-        </tr>
-        <tr>
-         <td width="60px"><div class="imgBx"><img src="images\pic-1.png" alt="profile pic 1"></div></td>
-         <td><h4>David <br> <span>Italy</span></h4></td>
-        </tr>
-        <tr>
-         <td width="60px"><div class="imgBx"><img src="images\pic-1.png" alt="profile pic 1"></div></td>
-         <td><h4>David <br> <span>Italy</span></h4></td>
-        </tr>
-        <tr>
-         <td width="60px"><div class="imgBx"><img src="images\pic-1.png" alt="profile pic 1"></div></td>
-         <td><h4>David <br> <span>Italy</span></h4></td>
-        </tr>
-        </tr> -->
-       <!-- </table> -->
+        </tbody>
+        </table>
 
     </div> 
         </div>

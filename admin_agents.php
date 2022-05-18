@@ -106,10 +106,7 @@ mysqli_close($conn);
     </div>
     <!-- search bar -->
     <div class="search">
-     <label>
-      <input type="text" placeholder="Search here">
-      <ion-icon name="search-outline"></ion-icon>
-     </label>
+     <div></div>
     </div>
 
     <!-- userimg -->

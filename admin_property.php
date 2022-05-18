@@ -19,6 +19,14 @@ $pending_properties=mysqli_fetch_all($result,MYSQLI_ASSOC);
 
 
 //to select accepted properties
+$sql4="SELECT * FROM property_table WHERE property_status='sold'";
+$result4=mysqli_query($conn,$sql4);
+
+$sold_property_count= mysqli_num_rows($result4);
+$sold_properties=mysqli_fetch_all($result4,MYSQLI_ASSOC);
+
+
+//to select accepted properties
 $sql2="SELECT * FROM property_table WHERE  property_status='accepted'";
 $result2=mysqli_query($conn,$sql2);
 
@@ -109,10 +117,7 @@ mysqli_close($conn);
     </div>
     <!-- search bar -->
     <div class="search">
-     <label>
-      <input type="text" placeholder="Search here">
-      <ion-icon name="search-outline"></ion-icon>
-     </label>
+     <div></div>
     </div>
 
     <!-- userimg -->
@@ -187,7 +192,18 @@ mysqli_close($conn);
         </tr>
        </thead>
         <tbody>
+          <!-- SOLD properties -->
          <tr>
+             <?php foreach($sold_properties as $sold_property):?>
+        <tr>
+        <td><?php echo htmlspecialchars($sold_property['property_id']);?></td>
+         <td><?php echo htmlspecialchars($sold_property['property_name']);?></td>
+         <td><?php echo htmlspecialchars($sold_property['location']);?></td>
+         <td><?php echo htmlspecialchars($sold_property['price']);?></td>
+         <td><?php echo htmlspecialchars($sold_property['purpose']);?></td>          
+         <td><span class="status sold"><?php echo htmlspecialchars($sold_property['property_status']);?></span></td>
+         </tr>
+        <?php endforeach;?>
            <!-- pending projects -->
         <?php foreach($pending_properties as $pending_property):?>
         <tr>

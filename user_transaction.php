@@ -3,25 +3,20 @@ include 'includes\db_config.php';
 
 session_start();
 $username=$_SESSION['userUid'];
-$sql= "SELECT * FROM book_tour WHERE user='$username' AND tour_status= 'pending' ";
-$result=mysqli_query($conn,$sql);
-$pending_tour_count=mysqli_num_rows($result);
-$pending_tours=mysqli_fetch_all($result,MYSQLI_ASSOC);
-
-$sql1= "SELECT * FROM book_tour WHERE user='$username' AND tour_status='rejected'";
+$sql1= "SELECT * FROM book_tour WHERE user='$username' AND tour_status='no'";
 $result1=mysqli_query($conn,$sql1);
 $rejected_tour_count=mysqli_num_rows($result1);
 $rejected_tours=mysqli_fetch_all($result1,MYSQLI_ASSOC);
 
 
-$sql2= "SELECT * FROM book_tour WHERE user='$username' AND tour_status='accepted'";
+$sql2= "SELECT * FROM book_tour WHERE user='$username' AND tour_status='yes'";
 $result2=mysqli_query($conn,$sql2);
 $accepted_tour_count=mysqli_num_rows($result2);
 $accepted_tours=mysqli_fetch_all($result2,MYSQLI_ASSOC);
 
-$total_tours=$pending_tour_count+$accepted_tour_count+$rejected_tour_count;
+// $total_tours=$pending_tour_count+$accepted_tour_count+$rejected_tour_count;
 
-mysqli_free_result($result);
+// mysqli_free_result($result);
 mysqli_free_result($result1);
 mysqli_free_result($result2);
 
@@ -40,7 +35,7 @@ mysqli_close($conn);
 <body>
 <div class="container">
    <div class="navigation">
-  <!-- navigation links -->
+ <!-- navigation links --> -->
   <ul>
    <li>
     <a href="#">
@@ -86,8 +81,7 @@ mysqli_close($conn);
     <!-- search bar -->
     <div class="search">
      <label>
-      <input type="text" placeholder="Search here">
-      <ion-icon name="search-outline"></ion-icon>
+      <div></div>
      </label>
     </div>
 
@@ -107,8 +101,8 @@ mysqli_close($conn);
     <div class="cardBox">
      <div class="card">
       <div>
-       <div class="numbers"><?php echo $total_tours?></div>
-       <div class="cardName">All Bookings</div>
+       <div class="numbers"></div>
+       <div class="cardName">All Transactions</div>
       </div>
 
       <div class="iconBx">
@@ -118,8 +112,8 @@ mysqli_close($conn);
 
          <div class="card">
       <div>
-       <div class="numbers"><?php echo $pending_tour_count?></div>
-       <div class="cardName">Pending Tours</div>
+       <div class="numbers"></div>
+       <div class="cardName">pending transactions</div>
       </div>
 
       <div class="iconBx">
@@ -129,8 +123,8 @@ mysqli_close($conn);
 
          <div class="card">
       <div>
-       <div class="numbers"><?php echo $accepted_tour_count?></div>
-       <div class="cardName">Accepted Tours</div>
+       <div class="numbers"></div>
+       <div class="cardName">accepted transactions</div>
       </div>
 
       <div class="iconBx">
@@ -140,8 +134,8 @@ mysqli_close($conn);
 
          <div class="card">
       <div>
-       <div class="numbers"><?php echo $rejected_tour_count?></div>
-       <div class="cardName">Rejected Tours</div>
+       <div class="numbers"></div>
+       <div class="cardName">Rejected Transactions</div>
       </div>
 
       <div class="iconBx">
@@ -154,42 +148,27 @@ mysqli_close($conn);
     <div class="details">
      <div class="usersStats">
       <div class="cardHeader">
-       <h2>All Booked Tours</h2>
+       <h2>Ongoing Transactions</h2>
       </div>
 
       <table>
        <thead>
         <tr>
-        <td>Tour ID</td>
+        <td>Transaction ID</td>
         <td>Property Id</td>
         <td>Owner_name</td>
-        <td>Date</td>
-        <td>Request</td>
-        <td>Time</td>
+        <!-- <td>Time</td> -->
         <td>Status</td>
         </tr>
        </thead>
         <tbody>
-           <!-- pending tour -->
-        <?php foreach($pending_tours as $pending_tour):?>
-        <tr>
-         <td><?php echo htmlspecialchars($pending_tour['tour_id']);?></td>
-         <td><?php echo htmlspecialchars($pending_tour['property_id']);?></td>
-         <td><?php echo htmlspecialchars($pending_tour['owner_name']);?></td>
-         <td><?php echo htmlspecialchars($pending_tour['date']);?></td>        
-         <td><?php echo htmlspecialchars($pending_tour['requests']);?></td>  
-         <td><span class="status pending"><?php echo htmlspecialchars($pending_tour['tour_status']);?></span></td>
-         </tr>
-        <?php endforeach;?>
-        
+      
         <!-- accepted tour -->
         <?php foreach($accepted_tours as $accepted_tour):?>
         <tr>
          <td><?php echo htmlspecialchars($accepted_tour['tour_id']);?></td>
          <td><?php echo htmlspecialchars($accepted_tour['property_id']);?></td>
-         <td><?php echo htmlspecialchars($accepted_tour['owner_name']);?></td>
-         <td><?php echo htmlspecialchars($accepted_tour['date']);?></td>        
-         <td><?php echo htmlspecialchars($accepted_tour['requests']);?></td>  
+         <td><?php echo htmlspecialchars($accepted_tour['owner_name']);?></td> 
          <td><span class="status delivered"><?php echo htmlspecialchars($accepted_tour['tour_status']);?></span></td>
          </tr>
         <?php endforeach;?>
@@ -199,19 +178,16 @@ mysqli_close($conn);
         <tr>
          <td><?php echo htmlspecialchars($rejected_tour['tour_id']);?></td>
          <td><?php echo htmlspecialchars($rejected_tour['property_id']);?></td>
-         <td><?php echo htmlspecialchars($rejected_tour['owner_name']);?></td>
-         <td><?php echo htmlspecialchars($rejected_tour['date']);?></td>        
-         <td><?php echo htmlspecialchars($rejected_tour['requests']);?></td>  
+         <td><?php echo htmlspecialchars($rejected_tour['owner_name']);?></td> 
          <td><span class="status rejected"><?php echo htmlspecialchars($rejected_tour['tour_status']);?></span></td>
          </tr>
         <?php endforeach;?>
        </table>
 
      </div>
-     <div class="recentUsers">
+     <!-- <div class="recentUsers">
       <div class="cardHeader">
-       <h2>Do you Want to Purchase?</h2>
-       <!-- <a href="#" class="btn">View All</a> -->
+       <h2>Approved Transaction</h2>
       </div>
       <table>
 
@@ -220,11 +196,11 @@ mysqli_close($conn);
         <tr>
          <td><?php echo htmlspecialchars($accepted_tour['tour_id']);?></td>
          <td><?php echo htmlspecialchars($accepted_tour['property_id']);?></td>
-         <?php echo " <td><a href='payment.php?id=".$accepted_tour['property_id']."&name=".$accepted_tour['owner_name']."' class=\"status delivered\">Yes</a></td>"?>
-          <?php echo "<td><a href='#' class=\"status rejected\">No</a></td>"?>
+         <?php echo " <td><a href='interested.php?id=".$accepted_tour['tour_id']."' class=\"status delivered\">Yes</a></td>"?>
+          <?php echo "<td><a href='notinterested.php?id=".$accepted_tour['tour_id']."' class=\"status rejected\">No</a></td>"?>
         <?php endforeach;?>
         </tr>
-       </table>
+       </table> -->
 
      </div>
     </div>
@@ -244,4 +220,4 @@ mysqli_close($conn);
 
 <script src="admin.js"></script>
 </body>
-</html>
+</html> -->

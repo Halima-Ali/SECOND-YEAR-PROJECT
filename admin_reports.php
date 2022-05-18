@@ -110,10 +110,7 @@ mysqli_close($conn);
     </div>
     <!-- search bar -->
     <div class="search">
-     <label>
-      <input type="text" placeholder="Search here">
-      <ion-icon name="search-outline"></ion-icon>
-     </label>
+    <div></div>
     </div>
 
     <!-- userimg -->
@@ -148,21 +145,21 @@ mysqli_close($conn);
         <td>Properties for each propertyOwner</td>
         <td><a href="z_poform.php">View</a></td>
         </tr>
-        <tr>
+        <!-- <tr>
         <td>Property Tours</td>
         <td><a href="#">View</a></td>
-        </tr>
+        </tr> -->
         <tr>
-        <td>Property prices per location</td>
+        <td>Average Property prices per location</td>
         <td><a href="z_locationavform.php">View</a></td>
         </tr>
         <tr>
-        <td>Transactions</td>
-        <td><a href="#">View</a></td>
+        <td>Transactions per Owner</td>
+        <td><a href="z_transactionsformperowner.php">View</a></td>
         </tr>
         <tr>
         <td>Property Tour vs Property Purchase Statistics</td>
-        <td><a href="#">View</a></td>
+        <td><a href="z_actualbought.php">View</a></td>
         </tr>
      </div>     
     </div>
