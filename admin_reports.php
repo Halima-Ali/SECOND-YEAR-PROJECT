@@ -122,79 +122,52 @@ mysqli_close($conn);
     </div>
     </div>
 
-    <!-- top bar -->
-    <div class="cardBox">
-     <div class="card">
-      <div>
-       <div class="numbers"><?php echo $user_count?></div>
-       <div class="cardName">Users</div>
-      </div>
-
-      <div class="iconBx">
-       <ion-icon name="person-outline"></ion-icon>
-      </div>
-     </div>
-
-         <div class="card">
-      <div>
-       <div class="numbers"><?php echo $agentcount?> </div>
-       <div class="cardName">Agents</div>
-      </div>
-
-      <div class="iconBx">
-       <ion-icon name="people-circle-outline"></ion-icon>
-      </div>
-     </div>
-
-         <div class="card">
-      <div>
-       <div class="numbers"><?php echo $property_count?></div>
-       <div class="cardName">All properties</div>
-      </div>
-
-      <div class="iconBx">
-      <ion-icon name="pricetag-outline"></ion-icon>
-      </div>
-     </div>
-
-         <div class="card">
-      <div>
-       <div class="numbers"><?php echo $propertyowners_count?></div>
-       <div class="cardName">Property Owners</div>
-      </div>
-
-      <div class="iconBx">
-       <ion-icon name="people-outline"></ion-icon>
-      </div>
-     </div>
-    </div>
+  
 
     <!-- section content -->
-    <div class="details">
-     <div class="usersStats">
+   
+     <div class="profile_details">
+     <div class="profilediv">
       <div class="cardHeader">
-       <h2>Report Generation page</h2>
+       <h2>Generated reports</h2>
       </div>
-      <ul>
-        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, ipsa at! Vel, culpa. Molestias, vel?</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, ipsa at! Vel, culpa. Molestias, vel?</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, ipsa at! Vel, culpa. Molestias, vel?</li>
-      </ul>
- 
-     </div>   
-     
-     <!-- New Customers -->
-     <div class="recentUsers">
-      <div class="cardHeader">
-       <h2>Recent Customers</h2>
-       <a href="#" class="btn">View All</a>
-      </div>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo, beatae adipisci? Repellendus consequatur illum, pariatur distinctio accusantium autem ab eius!</p>
-     </div>
+
+      <table>
+       <thead>
+        <tr>
+        <td>Report Name</td>
+        <td>Action</td>
+        </tr>
+       </thead>
+        <tbody>
+         <tr>
+        <td>All Users</td>
+        <td><a href="z_all_users.php">View</a></td>
+        </tr>
+        <tr>
+        <td>Properties for each propertyOwner</td>
+        <td><a href="z_poform.php">View</a></td>
+        </tr>
+        <tr>
+        <td>Property Tours</td>
+        <td><a href="#">View</a></td>
+        </tr>
+        <tr>
+        <td>Property prices per location</td>
+        <td><a href="#">View</a></td>
+        </tr>
+        <tr>
+        <td>Transactions</td>
+        <td><a href="#">View</a></td>
+        </tr>
+        <tr>
+        <td>Property Tour vs Property Purchase Statistics</td>
+        <td><a href="#">View</a></td>
+        </tr>
+     </div>     
     </div>
 
    </div>
-  </div>
 
   <!-- top row  -->
 

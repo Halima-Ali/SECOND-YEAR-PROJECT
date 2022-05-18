@@ -93,14 +93,38 @@ else{
  $ig= mysqli_real_escape_string($conn, $_POST['instagram']);
  $ln= mysqli_real_escape_string($conn, $_POST['linkedin']);
 
- $sql= "INSERT INTO agent_profile(agent_name,agent_email,company,phone,instagram,linkedin,agentId,status,description) VALUES('$agentname','$agentemail','$company','$phone','$ig','$ln','$agentId','pending','$about');";
+ $sql="SELECT * FROM agent_profile WHERE agentId='$agentId' ";
+ $result1=mysqli_query($conn,$sql);
+  $profile_count= mysqli_num_rows($result1);
 
- if(mysqli_query($conn,$sql)){
-  header("Location:agents_profile.php");
+  if($profile_count>0){
+  $sql1="DELETE FROM agent_images WHERE agentId='$agentId'";
+  $sql="UPDATE agent_profile SET agent_name='$agentname',agent_email='$agentemail',company='$company',phone='$phone',instagram='$ig',linkedin='$ln',agentId='$agentId',status='pending',description='$about'  WHERE agentId='$agentId'";
+  if(mysqli_query($conn,$sql1)){
  } else{
 
   echo 'query error'. mysqli_error($conn);
  }
+
+  if(mysqli_query($conn,$sql)){
+  header("Location:agent_images.php");
+ } else{
+
+  echo 'query error'. mysqli_error($conn);
+ }
+  }
+
+  else{
+ $sql= "INSERT INTO agent_profile(agent_name,agent_email,company,phone,instagram,linkedin,agentId,status,description) VALUES('$agentname','$agentemail','$company','$phone','$ig','$ln','$agentId','pending','$about');";
+
+ if(mysqli_query($conn,$sql)){
+  header("Location: agent_images.php");
+ } else{
+
+  echo 'query error'. mysqli_error($conn);
+ }
+  }
+
 }
 //end of validation  
 }
@@ -119,11 +143,7 @@ else{
 <body>
 
 <h1 class="formtitle">Personal <span class="orange">details</span></h1>
- 
- <form action="agents_profileform.php" method="POST">
- <label for="Profile">Profile Image</label>
- <input type="file" name="profile_img">
-
+<form action="agents_profileform.php" method="POST">
  <label for="name">Full Name</label>
  <input type="text" name="name" placeholder="Your Name" value="<?php echo htmlspecialchars($agentname)?>">
  <div class="errors"><?php echo $errors['name']?></div>

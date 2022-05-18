@@ -3,9 +3,8 @@
 session_start();
 
 include 'includes\db_config.php';
-if(!isset($_SESSION['agentId'])){}
 
-$id=$_SESSION['agentId'];
+$id=$_GET['id'];
 
 $sql= "SELECT * FROM agent_profile WHERE agentId='$id'";
 
@@ -17,8 +16,6 @@ $agent=mysqli_fetch_assoc($result);
 
 mysqli_free_result($result);
 mysqli_close($conn);
-
-
 
 ?>
 
@@ -33,15 +30,8 @@ mysqli_close($conn);
 </head>
 <body>
 
-  <h1 class="formtitle">Your <span class="orange">Profile</span></h1>
+  <h1 class="formtitle">Profile <span class="orange">Details</span></h1>
   <hr>
-  <div class="profilenav">
-  <?php
-  if(isset($_SESSION['agentId'])){
-  echo " <p> Hi," .$_SESSION['agentname']."</p>";}?>
- <a href="agents_profileform.php" class="profilelink">Edit profile</a>
- <a href="includes\agentlogout.inc.php"class="profilelink">Sign out</a>
-</div>
 
 <div class="container">
     <div class="contactinfo">
@@ -53,10 +43,6 @@ mysqli_close($conn);
    echo " <p><ion-icon name=\"call-outline\"></ion-icon>" .htmlspecialchars($agent['phone'])."</p>";
    echo " <p><ion-icon name=\"logo-instagram\"></ion-icon>" .htmlspecialchars($agent['instagram'])."</p>";
    echo " <p><ion-icon name=\"logo-linkedin\"></ion-icon>" .htmlspecialchars($agent['linkedin'])."</p>";
-    }
-    else{
-    echo 'No information yet please edit your profile';
-
     }
   
 ?> 
@@ -70,9 +56,6 @@ mysqli_close($conn);
    echo "<h2 class=\"title\">Status</h2>";
    echo "<p>" .$agent['status']."</p> "; 
  } 
- else{
-    echo 'No information yet please edit your profile';
- }
 ?>     
      
     </div>

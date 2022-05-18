@@ -1,3 +1,12 @@
+<?php
+session_start();
+include 'includes\db_config.php';
+$po_id=$_SESSION['po_id'];
+    $id=$_SESSION['po_id'];
+    $sql="SELECT * FROM po_profile WHERE propertyOwnerId='$id'";
+    $result1=mysqli_query($conn,$sql);
+    $profileimg_count= mysqli_num_rows($result1);
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,18 +17,17 @@
  <title>Document</title>
 </head>
 <body>
- <h1 class="formtitle">Property <span class="orange">image Upload</span></h1>
- <form action="image_property.php" method="POST" enctype="multipart/form-data">
- <input type="text" name="propertyName" placeholder="Property Name...">
- <input type="file" name="userfile[]" value=""  multiple="">
+ <h1 class="formtitle">Profile<span class="orange">image Upload</span></h1>
+ <form action="po_imageupload.php" method="POST" enctype="multipart/form-data">
+  <h6>Please upload a profile pic</h6>
+ <input type="file" name="userfile[]" value="">
  <button type="submit" name="submit" value="Upload">Upload</button>
 </form> 
 <?php
 
-include 'includes\db_config.php';
 
 $mysqli= new mysqli('localhost', 'root', '', 'finalproject') or die($mysqli->connect.error);
-$table='property_images';
+$table='po_images';
 $phpFileUploadErrors= array(
  0 =>'There is no error, the file uploaded with success' ,
  1 =>'the uploaded file exceed the upload_max_filesize directive n php.ini',
@@ -35,16 +43,6 @@ if(isset($_FILES['userfile'])){
  $file_array=reArrayFiles($_FILES['userfile']);
  // pre_r($file_array);
 
- if(empty($_POST['propertyName'])){
-  echo 'Enter a propertyName';
- }
- else{
- $propertyName=$_POST['propertyName'];
- $sql1="SELECT * FROM property_table WHERE property_name='$propertyName'";
- $result=mysqli_query($conn,$sql1);
- $num_rows = mysqli_num_rows($result);
-
-if ($num_rows > 0) {
  // we want to look throught the array
  for($i=0;$i<count($file_array);$i++){
   // check for errors
@@ -67,24 +65,30 @@ if ($num_rows > 0) {
    else{
     $img_dir= 'images/'.$file_array[$i]['name'];    
     move_uploaded_file($file_array[$i]['tmp_name'],$img_dir);
-    $sql= "INSERT INTO $table (propertyName,img_name,img_dir) VALUES('$propertyName','$name','$img_dir');";
+
+    if(!file_exists($img_dir)){
+    $sql="INSERT INTO $table (propertyOwnerId,img_name,img_dir) VALUES ('$po_id','$name','$img_dir');";
     $mysqli->query($sql) or die($mysqli->error);
     echo $file_array[$i]['name']. 'Success! image has been uploaded';
-    header("Location:po_properties.php");
+    } else{
+     $sql="UPDATE $table SET propertyOwnerId='$po_id',img_name='$name',img_dir='$img_dir' WHERE propertyOwnerId='$po_id';";
+     $mysqli->query($sql) or die($mysqli->error);
+     echo $file_array[$i]['name']. 'Success! image has been uploaded';
+    }
+    
+
+    $sql="INSERT INTO $table (propertyOwnerId,img_name,img_dir) VALUES ('$po_id','$name','$img_dir');";
+       $mysqli->query($sql) or die($mysqli->error);
+       echo $file_array[$i]['name']. 'Success! image has been uploaded';
+    
+    header("Location:po_profile.php");
    }
 
-  
-mysqli_free_result($result);
-mysqli_close($conn);
    }
   } 
 
 }
-else {
- echo 'the property name doesnt exist';  // do something else
-}}
 
-}
 
 function reArrayFiles($file_post){
  $file_ary=array();
@@ -108,4 +112,3 @@ function pre_r($array){
 
 </body>
 </html>
-

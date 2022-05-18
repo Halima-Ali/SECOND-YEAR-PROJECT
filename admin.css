@@ -308,6 +308,8 @@ white-space: nowrap ;
  text-decoration: none;
  color: var(--white);
  border-radius: 6px;
+ border: none;
+outline: 0;
 }
 
 .details table{
@@ -484,8 +486,16 @@ overflow-y: auto;
   grid-template-columns:repeat(1,1fr);
  }
 
+ .profile_details{
+  grid-template-columns: repeat(1,1fr);
+ }
+
  .usersStats{
   overflow-x: auto;
+ }
+
+ .profilediv{
+   overflow-x: auto;
  }
 
 .status.pending{
@@ -547,3 +557,80 @@ table tr td a{
 table tr td a:hover{
   color: var(--white);
 }
+
+
+
+/* shenanigans */
+.profilediv{
+    position: relative;
+    display: grid;
+    min-height: 250px;
+    /* change depending on content */
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, .08);
+    border-radius: 20px;
+    overflow-y: auto;
+    width: 80%;
+    left: 80px;
+}
+
+.profilediv h3{
+ margin-top: 30px;
+ font-size: 2rem;
+}
+
+.profilediv ion-icon{
+  font-size: 30px;
+  color: orangered;
+  padding-right: 10px;
+}
+
+.profile_details p{
+  margin: 5px;
+}
+
+
+
+.profile_details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.profile_details table thead td {
+  font-weight: 600;
+}
+
+.profile_details .profilediv table tr {
+  color: var(--black);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* to be removed */
+.profile_details .profilediv table tr:last-child {
+  border-bottom: none;
+}
+
+.profile_details .profilediv table tbody tr:hover {
+  background: var(--orange);
+  color: var(--white);
+}
+
+.profile_details .profilediv table tr td {
+  padding: 10px;
+}
+
+.profile_details .profilediv table tr td:last-child {
+  text-align: end;
+}
+
+.profile_details .profilediv table tr td:nth-child(2) {
+  text-align: end;
+}
+
+.profile_details .profilediv table tr td:nth-child(3) {
+  text-align: center;
+}
+
+/* reports styling */

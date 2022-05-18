@@ -170,7 +170,7 @@ mysqli_close($conn);
     <div class="details">
      <div class="usersStats">
       <div class="cardHeader">
-       <h2>All Agents</h2>
+       <h2>All Agent profiles</h2>
        <!-- <a href="#" class="btn">View All</a> -->
       </div>
 
@@ -227,7 +227,7 @@ mysqli_close($conn);
      <!-- New Customers -->
      <div class="recentUsers">
       <div class="cardHeader">
-       <h2>Pending Agents</h2>
+       <h2>Pending Agent profiles</h2>
        <!-- <a href="#" class="btn">View All</a> -->
       </div>
       <table>

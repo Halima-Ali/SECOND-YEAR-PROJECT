@@ -181,6 +181,17 @@ mysqli_close($conn);
  <input type="text" name="location" placeholder="location">
  <div class="errors"><?php echo $errors['location']?></div>
 
+ <label for="commute_time">Commute Time</label>
+ <input type="text" name="commute_time" placeholder="Commute time in minutes to CBD area">
+ <div class="errors"><?php echo $errors['commute_time']?></div>
+
+ <label for="nearby_facilites">Nearby Facilities</label>
+ <textarea name="nearby_facilites" id="about" cols="30" rows="10" placeholder="What facilities are close by?" value="<?php echo htmlspecialchars($nearby_facilities)?>"></textarea>
+ <div class="errors"><?php echo $errors['nearby_facilities']?></div>
+
+ <label for="cyclist">Joggers and cylists Safety</label>
+ <textarea name="nearby_facilites" id="about" cols="30" rows="10" placeholder="What facilities are close by?" value="<?php echo htmlspecialchars($description)?>"></textarea>
+
  <label for="price">Price</label>
  <input type="text" name="price" placeholder="Property Price">
   <div class="errors"><?php echo $errors['price']?></div>

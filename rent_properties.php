@@ -17,19 +17,29 @@ mysqli_free_result($result1);
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="stylesheet" href="property.css">
+ <link rel="stylesheet" href="property1.css">
  <title>All Properties</title>
 </head>
 <body>
 
-<a href="tel:0792785777">0792785777</a>
- <!-- contains all property divs -->
-<button><a href="po_signup.php">Sign Up Property Owner</a></button>
+<header class="header">
+<nav>
+    <h3 class="logo">Real<span class="orange">Estate</span></h3>
+    <button class="register-btn"><a href="po_signup.php">Sign Up Property Owner</a></button>
+</nav>
+
+<div class="container">
+<h2>Rental Properties</h2>
+<p>Find your next place one click away</p>
+</div>
+
+</header>
 
 <!-- featured section starts  -->
 
 <section class="featured" id="featured">
 
-    <h1 class="heading"> <span>featured</span> properties </h1>
+    <!-- <h1 class="heading"> <span>featured</span> properties </h1> -->
 
     <div class="box-container">
       <?php foreach($properties as $property):?>

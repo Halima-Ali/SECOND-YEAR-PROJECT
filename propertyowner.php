@@ -4,6 +4,7 @@ session_start();
 // properties
 // to select the properties
 $username= $_SESSION['po_Uid'];
+$id=$_SESSION['po_id'];
 $sql1="SELECT * FROM property_table WHERE owner_name='$username'";
 $result1=mysqli_query($conn,$sql1);
 
@@ -17,7 +18,19 @@ $result2=mysqli_query($conn,$sql2);
 $accepted_property_count= mysqli_num_rows($result2);
 $accepted_properties=mysqli_fetch_all($result2,MYSQLI_ASSOC);
 
+
+//IMAGES
+
+  $sql3="SELECT * FROM po_images WHERE propertyOwnerId='$id' LIMIT 1";
+  $result3=mysqli_query($conn,$sql3);
+
+  $images_count=mysqli_num_rows($result3);
+  $images=mysqli_fetch_assoc($result3);
+
+
 mysqli_free_result($result1);
+mysqli_free_result($result2);
+mysqli_free_result($result3);
 mysqli_close($conn);
 
 ?>
@@ -54,7 +67,7 @@ mysqli_close($conn);
     </a>
    </li>
    <li>
-    <a href="#">
+    <a href="po_profile.php">
     <span class="icon"><ion-icon name="person-outline"></ion-icon></ion-icon></span>
     <span class="title">Profile</span>   
     </a>
@@ -97,7 +110,14 @@ mysqli_close($conn);
 
     <!-- userimg -->
     <div class="user">
-     <img src="images\pic-1.png" alt="image1">
+      <?php
+      if($images_count>0){
+       echo "<img src=\"{$images['img_dir']}\" class=\"img1\"alt=\"\">";
+      } else{
+        echo "<img src=\"images/default_profilepic.jpg\" class=\"img1\"alt=\"\">";
+      }
+      
+      ?>
     </div>
     </div>
 

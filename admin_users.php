@@ -4,7 +4,7 @@ include 'includes\db_config.php';
 
 //number of agents
 // to find all agents
-$sql="SELECT * FROM agent_profile ORDER BY agentNo";
+$sql="SELECT * FROM usersagents ORDER BY agentId";
 $result=mysqli_query($conn,$sql);
 
 $agentcount= mysqli_num_rows($result);
@@ -198,11 +198,11 @@ mysqli_close($conn);
         <!-- agents -->
       <?php foreach($totalagents as $totalagent):?>
        <tr>
-         <td><?php echo $totalagent['agent_name'];?></td>
-         <td><?php echo $totalagent['agent_email'];?></td>
-         <td><?php echo $totalagent['company'];?></td>
+         <td><?php echo $totalagent['agentName'];?></td>
+         <td><?php echo $totalagent['Email'];?></td>
+         <td><?php echo $totalagent['username'];?></td>
          <td><span class="status rejected">Agent</span></td>
-         <?php echo "<td><a href='agents_delete.php?id=".$totalagent['agentNo']."'><ion-icon name=\"trash-outline\"></ion-icon></a></td>";?>
+         <?php echo "<td><a href='agents_delete.php?id=".$totalagent['agentId']."'><ion-icon name=\"trash-outline\"></ion-icon></a></td>";?>
           <?php endforeach;?>
        </tr>
         
@@ -213,7 +213,7 @@ mysqli_close($conn);
          <td><?php echo $owners['po_email'];?></td>
          <td><?php echo $owners['po_Uid'];?></td>
          <td><span class="status delivered">Property Owner</span></td>
-         <?php echo "<td><a href='po_delete.php?id=".$owners['propertyOwnerId']."'><ion-icon name=\"trash-outline\"></ion-icon></a></td>";?>
+         <?php echo "<td><a href='po_delete.php?id=".$owners['propertyOwnerId']."&name=".$owners['po_name']."'><ion-icon name=\"trash-outline\"></ion-icon></a></td>";?>
         <?php endforeach;?>
        </tr>
          </tbody>

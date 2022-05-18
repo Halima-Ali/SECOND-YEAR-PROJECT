@@ -20,7 +20,7 @@ function emptyInputSignup($name1, $email1, $userName1, $pwd1,$pwdRepeat1){
 function invalidUId($userName1){
   $result;// will either be true or false
 
- if(!preg_match("/^[a-zA-Z0-9]*$/", $userName1)){
+ if(!preg_match('/^[a-zA-Z0-9]*$/', $userName1)){
   $result= true;
  }
  else{

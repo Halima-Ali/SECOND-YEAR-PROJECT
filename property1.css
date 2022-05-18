@@ -1,0 +1,59 @@
+/* banner images styling */
+.header {
+ min-height: 70vh;
+ width: 100%;
+ background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(images/pexels-pixabay-358636.jpg);
+ background-size: cover;
+ background-position: center;
+ background-color: orange;
+}
+
+nav {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 20px 6%;
+}
+
+.logo {
+ cursor: pointer;
+ color: #fff;
+ font-size: 20px;
+}
+
+.orange {
+ color: orangered;
+}
+
+nav a {
+ text-decoration: none;
+ color: #000;
+ font-size: 1.5rem;
+}
+
+.register-btn {
+ background: #fff;
+ color: #000;
+ padding: 8px 20px;
+ border-radius: 20px;
+ text-decoration: none;
+ font-size: 14px;
+}
+
+.container {
+ padding:0 7%;
+}
+
+.header h2{
+ font-size: 4vw;
+ font-weight: 500;
+ color: white;
+ padding-top: 15%;
+ /* margin-left: px; */
+}
+
+.header p {
+  font-size: 2vw;
+  font-weight: 500;
+  color: #000;
+}

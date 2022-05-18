@@ -45,12 +45,14 @@ label{
  margin: 5px;
 }
 
-input, textarea{
+input, textarea,select{
  display: block;
  margin: 10px;
  width: 90%;
  padding: 10px;
 }
+
+
 
 button{
  border: none;

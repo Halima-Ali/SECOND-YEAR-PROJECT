@@ -9,7 +9,14 @@ $result1=mysqli_query($conn,$sql1);
 $property_count= mysqli_num_rows($result1);
 $properties=mysqli_fetch_all($result1,MYSQLI_ASSOC);
 
+// agents
+$sql= "SELECT * FROM agent_profile WHERE status='accepted' ORDER BY agentId LIMIT 3";
 
+$result=mysqli_query($conn,$sql);
+
+$agents=mysqli_fetch_all($result,MYSQLI_ASSOC);
+
+mysqli_free_result($result);
 mysqli_free_result($result1);
 ?>
 
@@ -32,14 +39,14 @@ mysqli_free_result($result1);
   <ul class="nav-links">
     <li><a href="#header">Home</a></li>
     <li><a href="#services">Our Services</a></li>
-    <li><a href="#properties">Properties</a></li>
+    <li><a href="#featured">Properties</a></li>
     <li><a href="#agents">Agents</a></li>
     <li><a href="#calculators">Calculators</a></li>
     <li><a href="#contacts">Contacts</a></li> 
     <?php
     //how to add session variables
   if(isset($_SESSION['userUid'])){
-    echo '<span class="username"> Hi,'.$_SESSION['userUid'].'</span>';
+    echo '<li><a href="user_dashboard.php">Dashboard</a></li> ';
   } 
   ?>
   </ul>  
@@ -87,7 +94,7 @@ mysqli_free_result($result1);
       <h3>Sell a Home</h3>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam distinctio ipsa ab cum error quas fuga ad?
         Perspiciatis, autem officiis?</p>
-      <a href="#" class="btn">See you options</a>
+      <a href="sell_properties.php" class="btn">See you options</a>
     </div>
 
     <div class="box">
@@ -160,67 +167,26 @@ mysqli_free_result($result1);
     <h1 class="heading"> Featured <span>Agents</span></h1>
     <a href="agentsdisplay.php" class="btn">See all</a>
   </div>
-  <div class="box-container">
-
-        <div class="box">
-            <a href="#" class="fas fa-envelope"></a>
-            <a href="#" class="fas fa-phone"></a>
-            <img src="images/pic-1.png" alt="">
-            <h3>john deo</h3>
-            <span>agent</span>
+   <div class="box-container">
+<?php foreach($agents as $agent):?>
+    <div class="box">
+            <a href="https://mail.google.com/mail/u/0/#inbox" class="fa-envelope" target="blank"><ion-icon name="mail"></ion-icon></a>
+            <a href="tel:<?php echo htmlspecialchars( $agent['phone'])?>" class="fa-phone"><ion-icon name="call-outline"></ion-icon></a>
+            <?php 
+            $id=$agent['agentId'];
+            $sql2= "SELECT * FROM agent_images WHERE agentId='$id'";
+            $result2=mysqli_query($conn,$sql2);
+             $images=mysqli_fetch_assoc($result2);
+             echo "<img src=\"{$images['img_dir']}\" alt=\"\">";?>
+            <h3><?php echo htmlspecialchars($agent['agent_name']);?></h3>
+            <span>Agent</span>
             <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
+              <?php echo "<a href='agent_individual.php?id=".$agent['agentId']."' class=\"btn\">View Profile</a>"?>
             </div>
-            <a href="#" class="btn">View Profile</a>
         </div>
+<?php endforeach;?>
 
-        <div class="box">
-            <a href="#" class="fas fa-envelope"></a>
-            <a href="#" class="fas fa-phone"></a>
-            <img src="images/pic-2.png" alt="">
-            <h3>john deo</h3>
-            <span>agent</span>
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <a href="#" class="btn">View Profile</a>
-        </div>
-
-        <div class="box">
-            <a href="#" class="fas fa-envelope"></a>
-            <a href="#" class="fas fa-phone"></a>
-            <img src="images/pic-3.png" alt="">
-            <h3>john deo</h3>
-            <span>agent</span>
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <a href="#" class="btn">View Profile</a>
-        </div>
-
-        <div class="box">
-            <a href="#" class="fas fa-envelope"></a>
-            <a href="#" class="fas fa-phone"></a>
-            <img src="images/pic-4.png" alt="">
-            <h3>john deo</h3>
-            <span>agent</span>
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-          <a href="#" class="btn">View Profile</a>
-        </div>
+    </div>
 
 </section>
 

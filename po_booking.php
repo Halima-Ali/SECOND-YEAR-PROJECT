@@ -4,6 +4,7 @@ session_start();
 // properties
 // to select the properties
 $username=$_SESSION['po_Uid'];
+$id=$_SESSION['po_id'];
 $sql1="SELECT * FROM book_tour WHERE owner_name='$username'";
 $result1=mysqli_query($conn,$sql1);
 
@@ -32,12 +33,20 @@ $result3=mysqli_query($conn,$sql3);
 $rejected_booking_count= mysqli_num_rows($result3);
 $rejected_bookings=mysqli_fetch_all($result3,MYSQLI_ASSOC);
 
+//images
+$sql4="SELECT * FROM po_images WHERE propertyOwnerId='$id' LIMIT 1";
+$result4=mysqli_query($conn,$sql4);
+$images_count=mysqli_num_rows($result4);
+$images=mysqli_fetch_assoc($result4);
+
+
 
 
 mysqli_free_result($result1);
 mysqli_free_result($result);
 mysqli_free_result($result2);
 mysqli_free_result($result3);
+mysqli_free_result($result4);
 mysqli_close($conn);
 
 ?>
@@ -74,7 +83,7 @@ mysqli_close($conn);
     </a>
    </li>
    <li>
-    <a href="#">
+    <a href="po_profile.php">
     <span class="icon"><ion-icon name="person-outline"></ion-icon></ion-icon></span>
     <span class="title">Profile</span>   
     </a>
@@ -86,7 +95,7 @@ mysqli_close($conn);
     </a>
    </li>
    <li>
-    <a href="#">
+    <a href="po_booking.php">
 
      <span class="icon"><ion-icon name="people-circle-outline"></ion-icon></span>
       <span class="title">Bookings</span>
@@ -117,7 +126,14 @@ mysqli_close($conn);
 
     <!-- userimg -->
     <div class="user">
-     <img src="images\pic-1.png" alt="image1">
+     <?php
+      if($images_count>0){
+       echo "<img src=\"{$images['img_dir']}\" class=\"img1\"alt=\"\">";
+      } else{
+        echo "<img src=\"images/default_profilepic.jpg\" class=\"img1\"alt=\"\">";
+      }
+      
+      ?>
     </div>
     </div>
 
