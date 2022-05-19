@@ -205,7 +205,7 @@ mysqli_close($conn);
          <td><?php echo htmlspecialchars($pending_property['location']);?></td>
          <td><?php echo htmlspecialchars($pending_property['price']);?></td>
          <td><?php echo htmlspecialchars($pending_property['purpose']);?></td>        
-        <?php echo "<td><a href='property_delete.php?id=".$pending_property['property_id']."&name=".$pending_property['property_name']."'><ion-icon name=\"trash-outline\"></ion-icon></a><a href=\"edit_property.php?id=\"".$pending_property['property_id']."&name=".$pending_property['property_name']."><ion-icon name=\"create-outline\"></ion-icon></a></td>";?>    
+        <?php echo "<td><a href='property_delete.php?id=".$pending_property['property_id']."&name=".$pending_property['property_name']."'><ion-icon name=\"trash-outline\"></ion-icon></a><a href=\"edit_property.php?id=\"".$pending_property['property_id']."&name=".$pending_property['property_name']."''><ion-icon name=\"create-outline\"></ion-icon></a></td>";?>    
          <td><span class="status pending"><?php echo htmlspecialchars($pending_property['property_status']);?></span></td>
          </tr>
         <?php endforeach;?>
@@ -229,7 +229,7 @@ mysqli_close($conn);
          <td><?php echo htmlspecialchars($rejected_property['location']);?></td>
          <td><?php echo htmlspecialchars($rejected_property['price']);?></td>
          <td><?php echo htmlspecialchars($rejected_property['purpose']);?></td>
-         <?php echo "<td><a href='property_delete.php?id=".$rejected_property['property_id']."&name=".$rejected_property['property_name']."'><ion-icon name=\"trash-outline\"></ion-icon></a><a href='edit_property.php?id=".$rejected_property['property_id']."&name=".$rejected_property['property_name']."'><ion-icon name=\"create-outline\"></ion-icon></a></td>";?>  
+         <?php echo "<td><a href='property_delete.php?id=".$rejected_property['property_id']."&name=".$rejected_property['property_name']."'><ion-icon name=\"trash-outline\"></ion-icon></a><a href='edit_property.php?id=".$rejected_property['property_id']."&name=".$rejected_property['property_name']."''><ion-icon name=\"create-outline\"></ion-icon></a></td>";?>  
          <td><span class="status rejected"><?php echo htmlspecialchars($rejected_property['property_status']);?></span></td>
          </tr>
         <?php endforeach;?>

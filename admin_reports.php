@@ -153,10 +153,10 @@ mysqli_close($conn);
         <td>Average Property prices per location</td>
         <td><a href="z_locationavform.php">View</a></td>
         </tr>
-        <tr>
+        <!-- <tr>
         <td>Transactions per Owner</td>
         <td><a href="z_transactionsformperowner.php">View</a></td>
-        </tr>
+        </tr> -->
         <tr>
         <td>Property Tour vs Property Purchase Statistics</td>
         <td><a href="z_actualbought.php">View</a></td>

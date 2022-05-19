@@ -174,8 +174,8 @@ mysqli_close($conn);
       </div>
       <b>What is done on the admin dashboard</b>
       <ul>
-        <li>Properties posted by property owners are approved to be displayeed on the system</li>
-        <li>Agent profiles posted by agents are approved to be displayeed on the system</li>
+        <li>Properties posted by property owners are approved to be displayed on the system</li>
+        <li>Agent profiles posted by agents are approved to be displayed on the system</li>
         <li>System Users can be deleted</li>
         <li>The Admin can view Sytem Generated Reports</li>
       </ul>

@@ -42,6 +42,13 @@ session_start();
     </a>
    </li>
 
+        <li>
+    <a href="#">
+     <span class="icon"><ion-icon name="person-outline"></ion-icon></ion-icon></span>
+     <span class="title">Payments</span>
+    </a>
+   </li>
+
 
    <li>
     <a href="includes/logout.inc.php">
@@ -74,7 +81,7 @@ session_start();
     <div class="cardBox">
      <div class="card">
       <div>
-       <div class="numbers"></div>
+       <div class="numbers">10</div>
        <div class="cardName">Transactions</div>
       </div>
 
@@ -85,7 +92,7 @@ session_start();
 
          <div class="card">
       <div>
-       <div class="numbers"></div>
+       <div class="numbers">14</div>
        <div class="cardName">All Bookings</div>
       </div>
 
@@ -96,7 +103,7 @@ session_start();
 
          <div class="card">
       <div>
-       <div class="numbers"></div>
+       <div class="numbers">5</div>
        <div class="cardName">Accepted Bookings</div>
       </div>
 
@@ -110,28 +117,18 @@ session_start();
     <div class="details">
      <div class="usersStats">
       <div class="cardHeader">
-       <h2>Admin Dashboard</h2>
+       <h2>Users Dashboard</h2>
       </div>
       <ul>
-        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, ipsa at! Vel, culpa. Molestias, vel?</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, ipsa at! Vel, culpa. Molestias, vel?</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, ipsa at! Vel, culpa. Molestias, vel?</li>
+        <li>What can be done on this dashboard?</li>
+        <li>You can view your house tour status</li>
+        <li>You can Choose whether or not you wish to purcase a house</li>
+        <li>You start a transaction and make a payment</li>
       </ul>
  
      </div>   
      
-     <!-- New Customers -->
-     <div class="recentUsers">
-      <div class="cardHeader">
-       <h2>Recent Customers</h2>
-       <a href="#" class="btn">View All</a>
-      </div>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo, beatae adipisci? Repellendus consequatur illum, pariatur distinctio accusantium autem ab eius!</p>
-     </div>
-    </div>
-
-   </div>
-  </div>
+  
 
   <!-- top row  -->
 

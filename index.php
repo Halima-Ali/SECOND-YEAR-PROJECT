@@ -294,13 +294,7 @@ mysqli_free_result($result1);
         <h3>Other Pages</h3>
         <a href="#">About us</a>
         <a href="#">FAQs</a>
-        <a href="#">Articles</a>
-        <?php
-  //is the user logged in?
-  if(isset($_SESSION['userUid'])){
-    echo '<a href="neighbourhoodreview.php">Neighbourhood review page</a>';
-  } 
-  ?>      
+        <a href="#">Articles</a>    
       </div>
 
       <div class="box">

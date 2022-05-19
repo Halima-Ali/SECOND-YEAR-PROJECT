@@ -1,6 +1,6 @@
 <?php
 $id=$_GET['id'];
-$name=$_GET['name'];
+// $name=$_GET['name'];
 session_start();
 ?>
 <!DOCTYPE html>

@@ -39,7 +39,7 @@ mysqli_close($conn);
 </head>
 <body>
 <div class="container">
-   <div class="navigation">
+    <div class="navigation">
   <!-- navigation links -->
   <ul>
    <li>
@@ -56,7 +56,7 @@ mysqli_close($conn);
    </li>
    <li>
     <a href="user_booking.php">
-     <span class="icon"><ion-icon name="people-circle-outline"></ion-icon></ion-icon></span>
+     <span class="icon"><ion-icon name="person-outline"></ion-icon></ion-icon></span>
      <span class="title">Bookings</span>
     </a>
    </li>
@@ -65,6 +65,13 @@ mysqli_close($conn);
     <a href="user_transaction.php">
      <span class="icon"><ion-icon name="person-outline"></ion-icon></ion-icon></span>
      <span class="title">Transactions</span>
+    </a>
+   </li>
+
+        <li>
+    <a href="#">
+     <span class="icon"><ion-icon name="person-outline"></ion-icon></ion-icon></span>
+     <span class="title">Payments</span>
     </a>
    </li>
 
@@ -77,7 +84,6 @@ mysqli_close($conn);
    </li>
   </ul>
    </div>
-
    <!-- main -->
    <div class="main">
     <div class="topbar">

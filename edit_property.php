@@ -8,7 +8,7 @@ session_start();
 include 'includes\db_config.php';
 
   $id=$_GET['id'];
-  $name=$_GET['name'];
+  // $name=$_GET['name'];
  $propertyName=$description=$location=$price=$area=$bed=$bath=$purpose=$propertyType=$amenities=$cyclists=$commute_time=$nearby_facilities='';
 
  //create the errors array
@@ -164,7 +164,9 @@ else{
 $sql2="SELECT * FROM property_table WHERE property_id='$id'";
 $result1=mysqli_query($conn,$sql2);
 $property_count= mysqli_num_rows($result1);
+$property=mysqli_fetch_assoc($result1);
 
+$name=$property['propertyname'];
 if($property_count>0){
  $sql1= "DELETE FROM property_images WHERE propertyName='$name'";
  $sql="UPDATE property_table SET property_name='$propertyName',	description='$description',purpose='$purpose',location='$location',property_Type='$propertyType',price='$price',	area='$area',bedrooms='$bed',bathrooms='$bath',	owner_name='$propertyOwner',property_status='pending',commute_time='$commute_time',nearby_facilities='$nearby_facilities',cyclists='$cyclists',amenities='$amenities',propertyOwnerId='$propertyOwnerId' WHERE property_id='$id'";

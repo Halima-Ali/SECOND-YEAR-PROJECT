@@ -3,13 +3,13 @@ include 'includes\db_config.php';
 
 session_start();
 $username=$_SESSION['userUid'];
-$sql1= "SELECT * FROM book_tour WHERE user='$username' AND tour_status='no'";
+$sql1= "SELECT * FROM book_tour WHERE user='$username' AND tour_status='not approved'";
 $result1=mysqli_query($conn,$sql1);
 $rejected_tour_count=mysqli_num_rows($result1);
 $rejected_tours=mysqli_fetch_all($result1,MYSQLI_ASSOC);
 
 
-$sql2= "SELECT * FROM book_tour WHERE user='$username' AND tour_status='yes'";
+$sql2= "SELECT * FROM book_tour WHERE user='$username' AND tour_status='approved'";
 $result2=mysqli_query($conn,$sql2);
 $accepted_tour_count=mysqli_num_rows($result2);
 $accepted_tours=mysqli_fetch_all($result2,MYSQLI_ASSOC);
@@ -34,8 +34,8 @@ mysqli_close($conn);
 </head>
 <body>
 <div class="container">
-   <div class="navigation">
- <!-- navigation links --> -->
+    <div class="navigation">
+  <!-- navigation links -->
   <ul>
    <li>
     <a href="#">
@@ -51,7 +51,7 @@ mysqli_close($conn);
    </li>
    <li>
     <a href="user_booking.php">
-     <span class="icon"><ion-icon name="people-circle-outline"></ion-icon></ion-icon></span>
+     <span class="icon"><ion-icon name="person-outline"></ion-icon></ion-icon></span>
      <span class="title">Bookings</span>
     </a>
    </li>
@@ -60,6 +60,13 @@ mysqli_close($conn);
     <a href="user_transaction.php">
      <span class="icon"><ion-icon name="person-outline"></ion-icon></ion-icon></span>
      <span class="title">Transactions</span>
+    </a>
+   </li>
+
+        <li>
+    <a href="#">
+     <span class="icon"><ion-icon name="person-outline"></ion-icon></ion-icon></span>
+     <span class="title">Payments</span>
     </a>
    </li>
 
@@ -185,9 +192,9 @@ mysqli_close($conn);
        </table>
 
      </div>
-     <!-- <div class="recentUsers">
+     <div class="recentUsers">
       <div class="cardHeader">
-       <h2>Approved Transaction</h2>
+       <h2>Do you wish to pay?</h2>
       </div>
       <table>
 
@@ -196,11 +203,10 @@ mysqli_close($conn);
         <tr>
          <td><?php echo htmlspecialchars($accepted_tour['tour_id']);?></td>
          <td><?php echo htmlspecialchars($accepted_tour['property_id']);?></td>
-         <?php echo " <td><a href='interested.php?id=".$accepted_tour['tour_id']."' class=\"status delivered\">Yes</a></td>"?>
-          <?php echo "<td><a href='notinterested.php?id=".$accepted_tour['tour_id']."' class=\"status rejected\">No</a></td>"?>
+         <?php echo " <td><a href='payment.php?id=".$accepted_tour['tour_id']."' class=\"status delivered\">Yes</a></td>"?>
         <?php endforeach;?>
         </tr>
-       </table> -->
+       </table>
 
      </div>
     </div>
